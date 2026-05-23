@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
     --cream: #f5f0e8;
     --warm-white: #faf8f3;
@@ -26,672 +25,234 @@
     --text-dark: #2a1f14;
     --text-mid: #5c4030;
     --text-light: #8a7060;
-    --shadow-warm: rgba(100, 60, 20, 0.12);
+    --shadow-warm: rgba(100,60,20,0.12);
   }
-
   html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Lato', sans-serif;
-    background: var(--cream);
-    color: var(--text-dark);
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+  body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
 
   /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4rem 2rem;
-    background: var(--warm-white);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(90,110,58,0.10) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 40% at 20% 10%, rgba(160,82,45,0.07) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .hero-plant {
-    font-size: 5rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-    animation: float 4s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.4rem, 6vw, 4.5rem);
-    color: var(--terracotta);
-    line-height: 1.15;
-    max-width: 800px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero .subtitle {
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: var(--text-mid);
-    margin-top: 1rem;
-    letter-spacing: 0.04em;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero .tagline {
-    margin-top: 2.5rem;
-    font-style: italic;
-    color: var(--text-light);
-    font-size: 1.05rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .scroll-down {
-    margin-top: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--sage);
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 1;
-    animation: bounce 2s ease-in-out infinite;
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
-
+  .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; background: var(--warm-white); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(90,110,58,0.10) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 20% 10%, rgba(160,82,45,0.07) 0%, transparent 60%); pointer-events: none; }
+  .hero-plant { font-size: 5rem; margin-bottom: 1.5rem; position: relative; z-index: 1; animation: float 4s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem,6vw,4.5rem); color: var(--terracotta); line-height: 1.15; max-width: 800px; position: relative; z-index: 1; }
+  .hero .subtitle { font-size: 1.25rem; font-weight: 300; color: var(--text-mid); margin-top: 1rem; letter-spacing: 0.04em; position: relative; z-index: 1; }
+  .hero .tagline { margin-top: 2.5rem; font-style: italic; color: var(--text-light); font-size: 1.05rem; position: relative; z-index: 1; }
+  .scroll-down { margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--sage); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; position: relative; z-index: 1; animation: bounce 2s ease-in-out infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
   .scroll-down svg { width: 24px; height: 24px; stroke: var(--sage); }
 
   /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(250,248,243,0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(90,110,58,0.15);
-    padding: 0 2rem;
-  }
-
-  .nav-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 56px;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .nav-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    color: var(--terracotta);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    flex-wrap: wrap;
-  }
-
-  .nav-links a {
-    color: var(--text-mid);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 400;
-    transition: color 0.2s;
-  }
-
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(250,248,243,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(90,110,58,0.15); padding: 0 2rem; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; flex-wrap: wrap; gap: 0.5rem; }
+  .nav-brand { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--terracotta); }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.85rem; font-weight: 400; transition: color 0.2s; }
   .nav-links a:hover { color: var(--terracotta); }
 
-  /* SECTION LAYOUT */
-  section {
-    padding: 5rem 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .section-full {
-    max-width: 100%;
-    padding: 5rem 2rem;
-    background: var(--warm-white);
-  }
-
-  .section-full .inner {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
-    color: var(--navy);
-    margin-bottom: 0.5rem;
-  }
-
+  /* SECTIONS */
+  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
+  .section-full { max-width: 100%; padding: 5rem 2rem; background: var(--warm-white); }
+  .section-full .inner { max-width: 1000px; margin: 0 auto; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,3.5vw,2.5rem); color: var(--navy); margin-bottom: 0.5rem; }
   .section-title.terracotta { color: var(--terracotta); }
   .section-title.olive { color: var(--olive); }
-
-  .section-lead {
-    font-size: 1.05rem;
-    color: var(--text-light);
-    margin-bottom: 3rem;
-    max-width: 680px;
-    font-style: italic;
-  }
-
-  .quote-bar {
-    border-left: 4px solid var(--gold);
-    padding: 1rem 1.5rem;
-    background: rgba(196,149,42,0.08);
-    border-radius: 0 8px 8px 0;
-    font-style: italic;
-    color: var(--text-mid);
-    margin: 2rem 0;
-    font-size: 1.05rem;
-  }
+  .section-lead { font-size: 1.05rem; color: var(--text-light); margin-bottom: 3rem; max-width: 680px; font-style: italic; }
+  .quote-bar { border-left: 4px solid var(--gold); padding: 1rem 1.5rem; background: rgba(196,149,42,0.08); border-radius: 0 8px 8px 0; font-style: italic; color: var(--text-mid); margin: 2rem 0; font-size: 1.05rem; }
 
   /* CARDS */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .card {
-    background: white;
-    border-radius: 16px;
-    padding: 1.75rem;
-    box-shadow: 0 2px 20px var(--shadow-warm);
-    transition: transform 0.25s, box-shadow 0.25s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 32px var(--shadow-warm);
-  }
-
-  .card .icon {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    color: var(--navy);
-    margin-bottom: 0.5rem;
-  }
-
-  .card p {
-    font-size: 0.95rem;
-    color: var(--text-mid);
-    line-height: 1.65;
-  }
-
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .card { background: white; border-radius: 16px; padding: 1.75rem; box-shadow: 0 2px 20px var(--shadow-warm); transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px var(--shadow-warm); }
+  .card .icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+  .card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--navy); margin-bottom: 0.5rem; }
+  .card p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.65; }
   .card.terracotta { border-top: 4px solid var(--terracotta); }
   .card.olive { border-top: 4px solid var(--olive); }
   .card.gold { border-top: 4px solid var(--gold); }
   .card.navy { border-top: 4px solid var(--navy); }
 
-  /* WHEEL - ¿Qué exige la inclusión? */
-  .cycle-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  @media (max-width: 600px) { .cycle-grid { grid-template-columns: 1fr; } }
-
-  .cycle-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    background: white;
-    border-radius: 14px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 16px var(--shadow-warm);
-  }
-
-  .cycle-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    flex-shrink: 0;
-  }
-
+  /* CYCLE */
+  .cycle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  @media(max-width:600px){.cycle-grid{grid-template-columns:1fr}}
+  .cycle-item { display: flex; align-items: flex-start; gap: 1rem; background: white; border-radius: 14px; padding: 1.5rem; box-shadow: 0 2px 16px var(--shadow-warm); }
+  .cycle-icon { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
   .cycle-icon.bg-terracotta { background: rgba(160,82,45,0.12); }
   .cycle-icon.bg-navy { background: rgba(30,45,74,0.10); }
   .cycle-icon.bg-olive { background: rgba(90,110,58,0.12); }
   .cycle-icon.bg-gold { background: rgba(196,149,42,0.12); }
-
-  .cycle-item h4 {
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 0.25rem;
-  }
-
+  .cycle-item h4 { font-weight: 700; color: var(--navy); margin-bottom: 0.25rem; }
   .cycle-item p { font-size: 0.9rem; color: var(--text-mid); }
 
-  /* COMPARISON TABLE */
+  /* TABLE */
   .compare-wrap { overflow-x: auto; margin-top: 2rem; }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.95rem;
-    background: white;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 2px 20px var(--shadow-warm);
-  }
-
-  th {
-    padding: 1rem 1.25rem;
-    font-weight: 700;
-    text-align: left;
-    font-size: 1rem;
-  }
-
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 20px var(--shadow-warm); }
+  th { padding: 1rem 1.25rem; font-weight: 700; text-align: left; font-size: 1rem; }
   th.exclusion { background: #a0522d; color: white; }
   th.integracion { background: #c4952a; color: white; }
   th.inclusion { background: #5a6e3a; color: white; }
   th.row-header { background: var(--cream); color: var(--text-dark); width: 120px; }
-
-  td {
-    padding: 1rem 1.25rem;
-    border-top: 1px solid rgba(0,0,0,0.06);
-    vertical-align: top;
-    color: var(--text-mid);
-  }
-
+  td { padding: 1rem 1.25rem; border-top: 1px solid rgba(0,0,0,0.06); vertical-align: top; color: var(--text-mid); }
   tr:nth-child(even) td { background: rgba(245,240,232,0.4); }
-
   .tag-x { color: #a0522d; font-weight: 700; }
   .tag-warn { color: #c4952a; font-weight: 700; }
   .tag-ok { color: #5a6e3a; font-weight: 700; }
 
-  /* RED / GREEN TOGGLE LIST */
-  .toggle-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  @media (max-width: 640px) { .toggle-list { grid-template-columns: 1fr; } }
-
-  .toggle-col h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 0.7rem 1.2rem;
-    border-radius: 10px 10px 0 0;
-    margin-bottom: 0;
-  }
-
+  /* TOGGLE LIST */
+  .toggle-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  @media(max-width:640px){.toggle-list{grid-template-columns:1fr}}
+  .toggle-col h3 { font-size: 1rem; font-weight: 700; padding: 0.7rem 1.2rem; border-radius: 10px 10px 0 0; margin-bottom: 0; }
   .toggle-col.red h3 { background: #a0522d; color: white; }
   .toggle-col.green h3 { background: #5a6e3a; color: white; }
-
-  .toggle-items {
-    background: white;
-    border-radius: 0 0 12px 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 16px var(--shadow-warm);
-  }
-
-  .toggle-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 1.2rem;
-    border-top: 1px solid rgba(0,0,0,0.06);
-    font-size: 0.92rem;
-    color: var(--text-mid);
-  }
-
-  .toggle-item .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
+  .toggle-items { background: white; border-radius: 0 0 12px 12px; overflow: hidden; box-shadow: 0 2px 16px var(--shadow-warm); }
+  .toggle-item { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.2rem; border-top: 1px solid rgba(0,0,0,0.06); font-size: 0.92rem; color: var(--text-mid); }
+  .toggle-item .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .toggle-col.red .dot { background: #a0522d; }
   .toggle-col.green .dot { background: #5a6e3a; }
 
-  /* EMPATHY STEPS */
-  .steps {
-    display: flex;
-    gap: 0;
-    margin-top: 2rem;
-    position: relative;
-  }
-
-  @media (max-width: 680px) {
-    .steps { flex-direction: column; }
-    .steps::before { display: none; }
-  }
-
-  .steps::before {
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 10%;
-    right: 10%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--terracotta), var(--gold), var(--olive));
-    z-index: 0;
-  }
-
-  .step {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    padding: 0 1rem;
-  }
-
-  .step-num {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content:: center;
-    font-size: 2rem;
-    background: white;
-    box-shadow: 0 4px 20px var(--shadow-warm);
-    margin-bottom: 1rem;
-    border: 3px solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
+  /* STEPS */
+  .steps { display: flex; gap: 0; margin-top: 2rem; position: relative; }
+  @media(max-width:680px){.steps{flex-direction:column;gap:2rem}.steps::before{display:none}}
+  .steps::before { content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 3px; background: linear-gradient(90deg,var(--terracotta),var(--gold),var(--olive)); z-index: 0; }
+  .step { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1; padding: 0 1rem; }
+  .step-num { width: 80px; height: 80px; border-radius: 50%; font-size: 2rem; background: white; box-shadow: 0 4px 20px var(--shadow-warm); margin-bottom: 1rem; border: 3px solid; display: flex; align-items: center; justify-content: center; }
   .step:nth-child(1) .step-num { border-color: var(--terracotta); }
   .step:nth-child(2) .step-num { border-color: var(--gold); }
   .step:nth-child(3) .step-num { border-color: var(--olive); }
-
-  .step h4 {
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 0.4rem;
-    font-size: 1rem;
-  }
-
+  .step h4 { font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; font-size: 1rem; }
   .step p { font-size: 0.88rem; color: var(--text-mid); }
 
-  /* TALLER STATION */
-  .station {
-    background: white;
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: 0 2px 20px var(--shadow-warm);
-    margin-bottom: 1.5rem;
-    border-left: 6px solid;
-    transition: transform 0.2s;
-  }
-
+  /* STATIONS */
+  .station { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 2px 20px var(--shadow-warm); margin-bottom: 1.5rem; border-left: 6px solid; transition: transform 0.2s; }
   .station:hover { transform: translateX(4px); }
   .station.s1 { border-color: var(--terracotta); }
   .station.s2 { border-color: var(--navy); }
   .station.s3 { border-color: var(--gold); }
-
-  .station h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--navy);
-    margin-bottom: 0.5rem;
-  }
-
-  .station .badge {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 0.75rem;
-  }
-
+  .station h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 0.5rem; }
+  .station .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
   .s1 .badge { background: rgba(160,82,45,0.12); color: var(--terracotta); }
   .s2 .badge { background: rgba(30,45,74,0.10); color: var(--navy); }
   .s3 .badge { background: rgba(196,149,42,0.12); color: #8a6010; }
-
   .station p { color: var(--text-mid); font-size: 0.95rem; }
-
-  .station .emotion {
-    margin-top: 0.75rem;
-    font-weight: 700;
-    font-size: 1.05rem;
-  }
-
+  .station .emotion { margin-top: 0.75rem; font-weight: 700; font-size: 1.05rem; }
   .s1 .emotion { color: var(--terracotta); }
   .s2 .emotion { color: var(--navy); }
   .s3 .emotion { color: var(--gold); }
 
   /* HOUSE */
-  .house {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 2rem;
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .house-level {
-    border-radius: 14px;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 2px 16px var(--shadow-warm);
-  }
-
-  .house-level.roof { background: var(--olive); clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 100%, 0 100%); padding-top: 3rem; text-align: center; }
-  .house-level.walls { background: #c8724a22; border: 2px solid #c8724a55; }
-  .house-level.foundation { background: var(--navy); }
-
-  .house-level h4 { font-weight: 700; margin-bottom: 0.3rem; }
+  .house { display: flex; flex-direction: column; gap: 0; margin-top: 2rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .house-level { padding: 1.5rem 2rem; }
+  .house-level.roof { background: var(--olive); clip-path: polygon(0 30%,50% 0,100% 30%,100% 100%,0 100%); padding-top: 3.5rem; text-align: center; border-radius: 14px 14px 0 0; }
+  .house-level.walls { background: #c8724a18; border-left: 2px solid #c8724a44; border-right: 2px solid #c8724a44; }
+  .house-level.foundation { background: var(--navy); border-radius: 0 0 14px 14px; }
+  .house-level h4 { font-weight: 700; margin-bottom: 0.3rem; font-size: 1.05rem; }
   .house-level.roof h4 { color: white; }
   .house-level.walls h4 { color: var(--terracotta); }
   .house-level.foundation h4 { color: var(--sage-light); }
-
   .house-level p { font-size: 0.9rem; }
   .house-level.roof p { color: rgba(255,255,255,0.88); }
   .house-level.walls p { color: var(--text-mid); }
   .house-level.foundation p { color: rgba(255,255,255,0.75); }
 
-  /* COMPROMISO FORM */
-  .compromiso-box {
-    background: white;
-    border-radius: 20px;
-    padding: 2.5rem;
-    box-shadow: 0 4px 40px var(--shadow-warm);
-    max-width: 640px;
-    margin: 2rem auto 0;
-  }
+  /* ============================
+     VIDEOS SECTION
+     ============================ */
+  .videos-section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
+  .video-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .vtab { background: white; border: 2px solid rgba(90,110,58,0.2); border-radius: 30px; padding: 0.5rem 1.2rem; font-size: 0.88rem; font-weight: 700; cursor: pointer; color: var(--text-mid); transition: all 0.2s; font-family: 'Lato', sans-serif; }
+  .vtab.active, .vtab:hover { background: var(--olive); color: white; border-color: var(--olive); }
+  .video-panel { display: none; }
+  .video-panel.active { display: block; }
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
+  .video-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 20px var(--shadow-warm); transition: transform 0.25s, box-shadow 0.25s; }
+  .video-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px var(--shadow-warm); }
+  .video-thumb { position: relative; padding-top: 56.25%; background: #e8e0d4; cursor: pointer; }
+  .video-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .video-thumb .play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(30,45,74,0.35); transition: background 0.2s; }
+  .video-thumb:hover .play-btn { background: rgba(30,45,74,0.55); }
+  .play-btn svg { width: 56px; height: 56px; fill: white; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
+  .video-tag { position: absolute; top: 10px; left: 10px; background: var(--terracotta); color: white; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .video-info { padding: 1.25rem; }
+  .video-info h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); margin-bottom: 0.4rem; line-height: 1.35; }
+  .video-info p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; line-height: 1.5; }
+  .video-link { display: inline-flex; align-items: center; gap: 0.4rem; background: #FF0000; color: white; text-decoration: none; padding: 0.45rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 700; transition: opacity 0.2s; }
+  .video-link:hover { opacity: 0.85; }
+  .video-link svg { width: 16px; height: 16px; fill: white; }
 
-  .compromiso-field {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.25rem 0;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
+  /* ============================
+     INFO EXTRA
+     ============================ */
+  .info-section { background: var(--warm-white); padding: 5rem 2rem; }
+  .info-inner { max-width: 1000px; margin: 0 auto; }
+  .info-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .itab { background: white; border: 2px solid rgba(30,45,74,0.15); border-radius: 30px; padding: 0.5rem 1.2rem; font-size: 0.88rem; font-weight: 700; cursor: pointer; color: var(--text-mid); transition: all 0.2s; font-family: 'Lato', sans-serif; }
+  .itab.active, .itab:hover { background: var(--navy); color: white; border-color: var(--navy); }
+  .info-panel { display: none; }
+  .info-panel.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
-  .compromiso-field:last-child { border-bottom: none; }
+  /* Mitos y realidades */
+  .myth-item { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  @media(max-width:600px){.myth-item{grid-template-columns:1fr}}
+  .myth-box, .reality-box { padding: 1.2rem 1.4rem; border-radius: 12px; font-size: 0.93rem; line-height: 1.6; }
+  .myth-box { background: #fff0eb; border-left: 4px solid var(--terracotta); color: var(--text-mid); }
+  .reality-box { background: #eef5e8; border-left: 4px solid var(--olive); color: var(--text-mid); }
+  .myth-box strong, .reality-box strong { display: block; margin-bottom: 0.3rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .myth-box strong { color: var(--terracotta); }
+  .reality-box strong { color: var(--olive); }
 
+  /* Glosario */
+  .glossary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .glossary-item { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 12px var(--shadow-warm); }
+  .glossary-item .term { font-weight: 700; color: var(--navy); font-size: 1rem; margin-bottom: 0.3rem; }
+  .glossary-item .def { font-size: 0.88rem; color: var(--text-mid); line-height: 1.55; }
+
+  /* Actividades */
+  .activity-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  .activity { background: white; border-radius: 14px; padding: 1.5rem; box-shadow: 0 2px 16px var(--shadow-warm); display: flex; gap: 1.2rem; align-items: flex-start; }
+  .activity .num { width: 44px; height: 44px; border-radius: 50%; background: var(--terracotta); color: white; font-weight: 700; font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .activity h4 { font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+  .activity p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
+  .activity .age-tag { display: inline-block; background: rgba(196,149,42,0.15); color: #7a5c0a; font-size: 0.75rem; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-top: 0.5rem; }
+
+  /* Recursos */
+  .recursos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .recurso { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 12px var(--shadow-warm); border-top: 4px solid; }
+  .recurso.libro { border-color: var(--terracotta); }
+  .recurso.web { border-color: var(--olive); }
+  .recurso.ong { border-color: var(--gold); }
+  .recurso .tipo { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+  .recurso.libro .tipo { color: var(--terracotta); }
+  .recurso.web .tipo { color: var(--olive); }
+  .recurso.ong .tipo { color: #8a6010; }
+  .recurso h4 { font-weight: 700; color: var(--navy); font-size: 0.95rem; margin-bottom: 0.3rem; line-height: 1.3; }
+  .recurso p { font-size: 0.82rem; color: var(--text-mid); line-height: 1.5; }
+
+  /* COMPROMISO */
+  .compromiso-box { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 4px 40px var(--shadow-warm); max-width: 640px; margin: 2rem auto 0; }
+  .compromiso-field { display: flex; align-items: center; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .compromiso-field:last-of-type { border-bottom: none; }
   .compromiso-field .field-icon { font-size: 1.8rem; flex-shrink: 0; width: 40px; text-align: center; }
-
-  .compromiso-field label {
-    font-size: 0.9rem;
-    color: var(--text-mid);
-    display: block;
-    margin-bottom: 0.3rem;
-  }
-
-  .compromiso-field input {
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid var(--sage-light);
-    padding: 0.4rem 0;
-    font-size: 1rem;
-    font-family: 'Lato', sans-serif;
-    outline: none;
-    background: transparent;
-    color: var(--text-dark);
-    transition: border-color 0.2s;
-  }
-
+  .compromiso-field label { font-size: 0.9rem; color: var(--text-mid); display: block; margin-bottom: 0.3rem; }
+  .compromiso-field input { width: 100%; border: none; border-bottom: 2px solid var(--sage-light); padding: 0.4rem 0; font-size: 1rem; font-family: 'Lato', sans-serif; outline: none; background: transparent; color: var(--text-dark); transition: border-color 0.2s; }
   .compromiso-field input:focus { border-color: var(--olive); }
-
-  .btn-compromiso {
-    display: block;
-    width: 100%;
-    margin-top: 2rem;
-    padding: 1rem;
-    background: var(--olive);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    font-family: 'Lato', sans-serif;
-    transition: background 0.2s, transform 0.1s;
-  }
-
+  .btn-compromiso { display: block; width: 100%; margin-top: 2rem; padding: 1rem; background: var(--olive); color: white; border: none; border-radius: 12px; font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; cursor: pointer; font-family: 'Lato', sans-serif; transition: background 0.2s, transform 0.1s; }
   .btn-compromiso:hover { background: var(--rust); transform: scale(1.01); }
-
-  #compromiso-msg {
-    display: none;
-    text-align: center;
-    margin-top: 1rem;
-    color: var(--olive);
-    font-weight: 700;
-    font-size: 1rem;
-  }
+  #compromiso-msg { display: none; text-align: center; margin-top: 1rem; color: var(--olive); font-weight: 700; font-size: 1rem; }
 
   /* CIERRE */
-  .cierre {
-    text-align: center;
-    padding: 6rem 2rem;
-    background: var(--navy);
-    position: relative;
-    overflow: hidden;
-  }
+  .cierre { text-align: center; padding: 6rem 2rem; background: var(--navy); position: relative; overflow: hidden; }
+  .cierre::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(90,110,58,0.25) 0%, transparent 70%); pointer-events: none; }
+  .cierre h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,4vw,3rem); color: white; max-width: 700px; margin: 0 auto 1rem; line-height: 1.3; position: relative; }
+  .cierre p { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 520px; margin: 0 auto 2.5rem; position: relative; }
+  .cierre .tips { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+  .cierre .tip { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 0.6rem 1.2rem; color: rgba(255,255,255,0.85); font-size: 0.9rem; }
 
-  .cierre::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(90,110,58,0.25) 0%, transparent 70%);
-    pointer-events: none;
-  }
+  /* FADE ANIMATION */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-  .cierre h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    color: white;
-    max-width: 700px;
-    margin: 0 auto 1rem;
-    line-height: 1.3;
-    position: relative;
-  }
-
-  .cierre p {
-    color: rgba(255,255,255,0.7);
-    font-size: 1.05rem;
-    max-width: 520px;
-    margin: 0 auto 2.5rem;
-    position: relative;
-  }
-
-  .cierre .tips {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-  }
-
-  .cierre .tip {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 10px;
-    padding: 0.6rem 1.2rem;
-    color: rgba(255,255,255,0.85);
-    font-size: 0.9rem;
-  }
-
-  /* DIVIDERS */
-  .leaf-divider {
-    text-align: center;
-    font-size: 1.5rem;
-    padding: 1rem 0;
-    color: var(--sage);
-    opacity: 0.6;
-  }
-
-  /* ANIMATIONS */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 480px) {
-    .cycle-grid { grid-template-columns: 1fr; }
-    .steps { flex-direction: column; gap: 2rem; }
-    .steps::before { display: none; }
-  }
+  @media(max-width:480px){.cycle-grid{grid-template-columns:1fr}.steps{flex-direction:column;gap:2rem}.steps::before{display:none}}
 </style>
 </head>
 <body>
@@ -704,9 +265,7 @@
   <p class="tagline">Un espacio para observar, entender y crecer juntos.</p>
   <div class="scroll-down">
     <span>Explorar</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6 9l6 6 6-6"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
   </div>
 </div>
 
@@ -718,7 +277,8 @@
       <li><a href="#diferencia">La diferencia</a></li>
       <li><a href="#que-es">¿Qué es?</a></li>
       <li><a href="#hogar">El hogar</a></li>
-      <li><a href="#taller">Taller</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#informacion">Información</a></li>
       <li><a href="#compromiso">Mi compromiso</a></li>
     </ul>
   </div>
@@ -728,7 +288,6 @@
 <section id="diferencia" class="fade-up">
   <p class="section-title terracotta">Todos en algún momento hemos sido diferentes</p>
   <p class="section-lead">Antes de hablar de inclusión, vale la pena mirar hacia adentro.</p>
-
   <div class="card-grid">
     <div class="card terracotta fade-up">
       <span class="icon">🧒</span>
@@ -746,10 +305,7 @@
       <p>La respuesta a esa pregunta es el mejor mapa para actuar hoy con los niños y niñas que nos rodean.</p>
     </div>
   </div>
-
-  <div class="quote-bar fade-up">
-    La inclusión empieza cuando dejamos de ver la diferencia como un problema.
-  </div>
+  <div class="quote-bar fade-up">La inclusión empieza cuando dejamos de ver la diferencia como un problema.</div>
 </section>
 
 <!-- SLIDE 3: Diversidad cotidiana -->
@@ -758,31 +314,11 @@
     <p class="section-title olive">La Diversidad Cotidiana</p>
     <p class="section-lead">"Todos los niños son diferentes, incluso dentro de la misma familia."</p>
     <div class="card-grid">
-      <div class="card navy fade-up">
-        <span class="icon">🖐️</span>
-        <h3>Diferencias físicas</h3>
-        <p>Altura, fuerza, coordinación, visión, audición… La diversidad corporal es la norma, no la excepción.</p>
-      </div>
-      <div class="card terracotta fade-up">
-        <span class="icon">📚</span>
-        <h3>Dificultades de aprendizaje</h3>
-        <p>Dislexia, TDAH, discalculia… muchos niños procesan la información de manera diferente.</p>
-      </div>
-      <div class="card gold fade-up">
-        <span class="icon">🐌</span>
-        <h3>Ritmos distintos</h3>
-        <p>Algunos aprenden más despacio, otros en ráfagas. El ritmo no define la capacidad.</p>
-      </div>
-      <div class="card olive fade-up">
-        <span class="icon">🌍</span>
-        <h3>Cultura, costumbres y lenguaje</h3>
-        <p>Origen, tradiciones familiares, idioma materno... la identidad cultural es parte de quien somos.</p>
-      </div>
-      <div class="card terracotta fade-up" style="grid-column: 1/-1; max-width: 400px; margin: 0 auto;">
-        <span class="icon">😶</span>
-        <h3>Personalidad</h3>
-        <p>Niños tímidos, hiperactivos, introvertidos, muy sensibles... la personalidad no es un defecto.</p>
-      </div>
+      <div class="card navy fade-up"><span class="icon">🖐️</span><h3>Diferencias físicas</h3><p>Altura, fuerza, coordinación, visión, audición… La diversidad corporal es la norma, no la excepción.</p></div>
+      <div class="card terracotta fade-up"><span class="icon">📚</span><h3>Dificultades de aprendizaje</h3><p>Dislexia, TDAH, discalculia… muchos niños procesan la información de manera diferente y necesitan apoyo específico.</p></div>
+      <div class="card gold fade-up"><span class="icon">🐌</span><h3>Ritmos distintos</h3><p>Algunos aprenden más despacio, otros en ráfagas. El ritmo no define la capacidad ni el potencial del niño.</p></div>
+      <div class="card olive fade-up"><span class="icon">🌍</span><h3>Cultura, costumbres y lenguaje</h3><p>Origen, tradiciones familiares, idioma materno... la identidad cultural es parte de quiénes somos.</p></div>
+      <div class="card terracotta fade-up" style="grid-column:1/-1;max-width:400px;margin:0 auto;"><span class="icon">😶</span><h3>Personalidad</h3><p>Niños tímidos, hiperactivos, introvertidos, muy sensibles... la personalidad no es un defecto a corregir.</p></div>
     </div>
   </div>
 </div>
@@ -791,36 +327,11 @@
 <section id="que-es" class="fade-up">
   <p class="section-title" style="color:var(--navy)">¿Qué exige verdaderamente la inclusión?</p>
   <p class="section-lead">No se trata de que el niño se adapte al entorno, sino de que el entorno también se adapte al niño.</p>
-
   <div class="cycle-grid">
-    <div class="cycle-item fade-up">
-      <div class="cycle-icon bg-navy">🔍</div>
-      <div>
-        <h4>Reconocer</h4>
-        <p>Que todas las personas son diferentes y que esa diferencia es válida y valiosa.</p>
-      </div>
-    </div>
-    <div class="cycle-item fade-up">
-      <div class="cycle-icon bg-terracotta">❤️</div>
-      <div>
-        <h4>Respetar</h4>
-        <p>Esas diferencias sin burlas, sin rechazo, sin comparaciones.</p>
-      </div>
-    </div>
-    <div class="cycle-item fade-up">
-      <div class="cycle-icon bg-olive">⚙️</div>
-      <div>
-        <h4>Adaptar</h4>
-        <p>Espacios, normas y actitudes para la participación de todos.</p>
-      </div>
-    </div>
-    <div class="cycle-item fade-up">
-      <div class="cycle-icon bg-gold">⭐</div>
-      <div>
-        <h4>Valorar</h4>
-        <p>Lo que cada persona aporta, desde sus propias fortalezas.</p>
-      </div>
-    </div>
+    <div class="cycle-item fade-up"><div class="cycle-icon bg-navy">🔍</div><div><h4>Reconocer</h4><p>Que todas las personas son diferentes y que esa diferencia es válida y valiosa.</p></div></div>
+    <div class="cycle-item fade-up"><div class="cycle-icon bg-terracotta">❤️</div><div><h4>Respetar</h4><p>Esas diferencias sin burlas, sin rechazo, sin comparaciones ni etiquetas.</p></div></div>
+    <div class="cycle-item fade-up"><div class="cycle-icon bg-olive">⚙️</div><div><h4>Adaptar</h4><p>Espacios, normas y actitudes para facilitar la participación de todos.</p></div></div>
+    <div class="cycle-item fade-up"><div class="cycle-icon bg-gold">⭐</div><div><h4>Valorar</h4><p>Lo que cada persona aporta, desde sus propias fortalezas y talentos únicos.</p></div></div>
   </div>
 </section>
 
@@ -861,7 +372,7 @@
         </tbody>
       </table>
     </div>
-    <div class="quote-bar fade-up" style="margin-top:2rem; border-color:var(--navy); background:rgba(30,45,74,0.07);">
+    <div class="quote-bar fade-up" style="margin-top:2rem;border-color:var(--navy);background:rgba(30,45,74,0.07);">
       <strong>Incluir no es hacer un favor, es garantizar un derecho.</strong>
     </div>
   </div>
@@ -871,23 +382,10 @@
 <section id="hogar" class="fade-up">
   <p class="section-title olive">El hogar es el primer incubador</p>
   <p class="section-lead">Lo que el niño vive en casa, lo repite en la escuela.</p>
-
   <div class="card-grid">
-    <div class="card navy fade-up">
-      <span class="icon">💧</span>
-      <h3>El Lenguaje</h3>
-      <p>Frases como "ese niño es raro" o "no se junte con él" generan rechazo invisible que se transfiere al aula.</p>
-    </div>
-    <div class="card terracotta fade-up">
-      <span class="icon">🧠</span>
-      <h3>Las Actitudes</h3>
-      <p>Burlarse, comparar hermanos o ignorar emociones enseña a hacer lo mismo afuera del hogar.</p>
-    </div>
-    <div class="card olive fade-up">
-      <span class="icon">🌿</span>
-      <h3>Los Valores</h3>
-      <p>El respeto, la empatía y la solidaridad se enseñan con el ejemplo diario, no con discursos.</p>
-    </div>
+    <div class="card navy fade-up"><span class="icon">💧</span><h3>El Lenguaje</h3><p>Frases como "ese niño es raro" o "no se junte con él" generan rechazo invisible que se transfiere directamente al aula.</p></div>
+    <div class="card terracotta fade-up"><span class="icon">🧠</span><h3>Las Actitudes</h3><p>Burlarse, comparar hermanos o ignorar emociones enseña a hacer lo mismo fuera del hogar.</p></div>
+    <div class="card olive fade-up"><span class="icon">🌿</span><h3>Los Valores</h3><p>El respeto, la empatía y la solidaridad se enseñan con el ejemplo diario, no con discursos ni charlas.</p></div>
   </div>
 </section>
 
@@ -896,7 +394,6 @@
   <div class="inner">
     <p class="section-title">Ajustes cotidianos: De los errores a las acciones</p>
     <p class="section-lead">La inclusión no es un tema del colegio, es una forma de vivir en familia.</p>
-
     <div class="toggle-list">
       <div class="toggle-col red fade-up">
         <h3>🔴 Errores comunes</h3>
@@ -924,33 +421,19 @@
 <section class="fade-up">
   <p class="section-title" style="color:var(--terracotta)">La Fórmula de la Empatía</p>
   <p class="section-lead">Un niño empático no nace, se forma en casa.</p>
-
   <div class="steps">
-    <div class="step fade-up">
-      <div class="step-num">👁️</div>
-      <h4>Paso 1: Observar</h4>
-      <p>Ponerse en el lugar del otro. ¿Qué siente? ¿Qué necesita?</p>
-    </div>
-    <div class="step fade-up">
-      <div class="step-num">🧠</div>
-      <h4>Paso 2: Procesar</h4>
-      <p>Entender cómo se siente internamente esa persona.</p>
-    </div>
-    <div class="step fade-up">
-      <div class="step-num">🤝</div>
-      <h4>Paso 3: Actuar</h4>
-      <p>Responder con respeto y apoyo genuino.</p>
-    </div>
+    <div class="step fade-up"><div class="step-num">👁️</div><h4>Paso 1: Observar</h4><p>Ponerse en el lugar del otro. ¿Qué siente? ¿Qué necesita?</p></div>
+    <div class="step fade-up"><div class="step-num">🧠</div><h4>Paso 2: Procesar</h4><p>Entender cómo se siente internamente esa persona.</p></div>
+    <div class="step fade-up"><div class="step-num">🤝</div><h4>Paso 3: Actuar</h4><p>Responder con respeto y apoyo genuino.</p></div>
   </div>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2.5rem;">
-    <div style="background:#fff0eb; border-radius:12px; padding:1.25rem; border-left:4px solid var(--terracotta);">
-      <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:0.3rem;">❌ Falta de empatía:</p>
-      <p style="color:var(--text-mid); font-style:italic;">"No llore por eso."</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;">
+    <div style="background:#fff0eb;border-radius:12px;padding:1.25rem;border-left:4px solid var(--terracotta);">
+      <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.3rem;">❌ Falta de empatía:</p>
+      <p style="color:var(--text-mid);font-style:italic;">"No llore por eso."</p>
     </div>
-    <div style="background:#eef5e8; border-radius:12px; padding:1.25rem; border-left:4px solid var(--olive);">
-      <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:0.3rem;">✅ Empatía activa:</p>
-      <p style="color:var(--text-mid); font-style:italic;">"Entiendo que te sientes mal, ¿quieres que te ayude?"</p>
+    <div style="background:#eef5e8;border-radius:12px;padding:1.25rem;border-left:4px solid var(--olive);">
+      <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.3rem;">✅ Empatía activa:</p>
+      <p style="color:var(--text-mid);font-style:italic;">"Entiendo que te sientes mal, ¿quieres que te ayude?"</p>
     </div>
   </div>
 </section>
@@ -960,94 +443,385 @@
   <div class="inner">
     <p class="section-title">Taller: Ponte en sus zapatos</p>
     <p class="section-lead">Tres estaciones para experimentar lo que viven muchos niños cada día.</p>
-
     <div class="station s1 fade-up">
       <span class="badge">Estación 1</span>
       <h3>Dificultades de aprendizaje</h3>
       <p>Intentar leer un texto mezclado con números bajo presión de tiempo genera:</p>
       <div class="emotion">😖 Frustración y confusión</div>
-      <p style="margin-top:0.5rem; font-size:0.88rem; color:var(--text-light);">Esta es la realidad de muchos niños en el aula todos los días.</p>
+      <p style="margin-top:0.5rem;font-size:0.88rem;color:var(--text-light);">Esta es la realidad de muchos niños en el aula todos los días.</p>
     </div>
-
     <div class="station s2 fade-up">
       <span class="badge">Estación 2</span>
       <h3>Discapacidad Visual</h3>
       <p>Escribir o dibujar sin ver genera:</p>
       <div class="emotion">😰 Inseguridad y dependencia</div>
-      <p style="margin-top:0.5rem; font-size:0.88rem; color:var(--text-light);">Sin apoyo adecuado, la autonomía se convierte en un obstáculo constante.</p>
+      <p style="margin-top:0.5rem;font-size:0.88rem;color:var(--text-light);">Sin apoyo adecuado, la autonomía se convierte en un obstáculo constante.</p>
     </div>
-
     <div class="station s3 fade-up">
       <span class="badge">Estación 3</span>
       <h3>Dificultad Auditiva</h3>
       <p>Seguir instrucciones en un entorno caótico y ruidoso genera:</p>
       <div class="emotion">😵 Desorientación profunda</div>
-      <p style="margin-top:0.5rem; font-size:0.88rem; color:var(--text-light);">Ahora imaginen sentir esto todos los días en un colegio ruidoso. ¿Qué necesitarían de su entorno?</p>
+      <p style="margin-top:0.5rem;font-size:0.88rem;color:var(--text-light);">Ahora imaginen sentir esto todos los días. ¿Qué necesitarían de su entorno?</p>
     </div>
   </div>
 </div>
 
-<!-- SLIDES 11-12: Árbol de problemas -->
+<!-- Árbol de problemas -->
 <section class="fade-up">
   <p class="section-title olive">Herramienta: El Árbol de Problemas</p>
   <p class="section-lead">Identificando situaciones de exclusión para proponer soluciones desde casa.</p>
-
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin-top:2rem;">
-    <div class="card fade-up" style="border-top:4px solid #5a6e3a;">
-      <span class="icon">🌱</span>
-      <h3>Las Raíces (Causas)</h3>
-      <p>¿Por qué ocurre esto en casa? Ej. Creencias erróneas, falta de información, lenguaje negativo de los padres.</p>
-    </div>
-    <div class="card fade-up" style="border-top:4px solid var(--terracotta);">
-      <span class="icon">🌳</span>
-      <h3>El Tronco (Problema central)</h3>
-      <p>La acción excluyente visible. Ej. Discriminación y burlas entre hermanos.</p>
-    </div>
-    <div class="card fade-up" style="border-top:4px solid var(--gold);">
-      <span class="icon">🍃</span>
-      <h3>Las Ramas (Consecuencias)</h3>
-      <p>¿Qué genera esto en los niños? Ej. Baja autoestima, normalización de la violencia, rechazo y aislamiento.</p>
-    </div>
-    <div class="card fade-up" style="border-top:4px solid var(--navy);">
-      <span class="icon">🍊</span>
-      <h3>Los Frutos (Soluciones)</h3>
-      <p>¿Qué podemos hacer desde hoy? Ej. Corregir el lenguaje, enseñar respeto mutuo, intervenir sin permitir burlas.</p>
-    </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:2rem;">
+    <div class="card fade-up" style="border-top:4px solid #5a6e3a;"><span class="icon">🌱</span><h3>Las Raíces (Causas)</h3><p>¿Por qué ocurre esto en casa? Ej. Creencias erróneas, falta de información, lenguaje negativo.</p></div>
+    <div class="card fade-up" style="border-top:4px solid var(--terracotta);"><span class="icon">🌳</span><h3>El Tronco (Problema central)</h3><p>La acción excluyente visible. Ej. Discriminación y burlas entre hermanos.</p></div>
+    <div class="card fade-up" style="border-top:4px solid var(--gold);"><span class="icon">🍃</span><h3>Las Ramas (Consecuencias)</h3><p>¿Qué genera esto en los niños? Ej. Baja autoestima, normalización de la violencia, aislamiento.</p></div>
+    <div class="card fade-up" style="border-top:4px solid var(--navy);"><span class="icon">🍊</span><h3>Los Frutos (Soluciones)</h3><p>¿Qué podemos hacer desde hoy? Ej. Corregir el lenguaje, intervenir ante las burlas.</p></div>
   </div>
-
-  <div class="quote-bar fade-up" style="margin-top:2rem;">
-    Los cambios pequeños en las raíces de casa generan grandes transformaciones en las ramas de la escuela.
-  </div>
+  <div class="quote-bar fade-up" style="margin-top:2rem;">Los cambios pequeños en las raíces de casa generan grandes transformaciones en las ramas de la escuela.</div>
 </section>
 
-<!-- SLIDE 13: Kit del Hogar Inclusivo -->
+<!-- Kit del Hogar Inclusivo -->
 <div class="section-full fade-up">
   <div class="inner">
     <p class="section-title" style="color:var(--navy)">El Kit de Herramientas del Hogar Inclusivo</p>
-    <p class="section-lead">Esta es tu arquitectura diaria.</p>
-
+    <p class="section-lead">Esta es tu arquitectura diaria. Si los cimientos de la empatía fallan, las paredes del lenguaje se derrumban.</p>
     <div class="house">
-      <div class="house-level roof">
-        <h4>🏠 El Techo: Inclusión Práctica</h4>
-        <p>Adaptar el entorno, promover juegos donde todos participen, hablar de diversidad con naturalidad.</p>
+      <div class="house-level roof"><h4>🏠 El Techo: Inclusión Práctica</h4><p>Adaptar el entorno, promover juegos donde todos participen, hablar de diversidad con naturalidad.</p></div>
+      <div class="house-level walls"><h4>Las Paredes: Lenguaje y Actitudes</h4><p>Evitar etiquetas, corregir burlas, dar el ejemplo con el trato a los demás.</p></div>
+      <div class="house-level foundation"><h4>Los Cimientos: Empatía Activa</h4><p>La capacidad de observar y validar emociones sin juzgar.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================
+     VIDEOS SECTION
+     ============================ -->
+<div class="videos-section fade-up" id="videos">
+  <p class="section-title" style="color:var(--navy)">📺 Videos recomendados</p>
+  <p class="section-lead" style="margin-bottom:1.5rem;">Recursos audiovisuales seleccionados para trabajar la inclusión en familia.</p>
+
+  <div class="video-tabs">
+    <button class="vtab active" onclick="showVPanel('cuentos',this)">📖 Cuentos animados</button>
+    <button class="vtab" onclick="showVPanel('empatia',this)">💚 Empatía</button>
+    <button class="vtab" onclick="showVPanel('sensibilizacion',this)">🌍 Sensibilización</button>
+  </div>
+
+  <!-- Panel: Cuentos animados -->
+  <div class="video-panel active" id="vpanel-cuentos">
+    <div class="video-grid">
+
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=dx9J2Pq_tUs" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
+          <img src="https://img.youtube.com/vi/dx9J2Pq_tUs/hqdefault.jpg" alt="Por 4 esquinitas de nada" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="video-tag">Cuento clásico</span>
+        </a>
+        <div class="video-info">
+          <h4>Por 4 esquinitas de nada</h4>
+          <p>El clásico cuento de Jérôme Ruillier sobre un cuadradito que quiere jugar con sus amigos redondos. Ideal para hablar de inclusión y diversidad.</p>
+          <a href="https://www.youtube.com/watch?v=dx9J2Pq_tUs" target="_blank" rel="noopener" class="video-link">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
+          </a>
+        </div>
       </div>
-      <div class="house-level walls" style="border-radius:0; padding: 1.5rem 2rem;">
-        <h4>Las Paredes: Lenguaje y Actitudes</h4>
-        <p>Evitar etiquetas, corregir burlas, dar el ejemplo con el trato a los demás.</p>
+
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=FEsEKcwQ6wQ" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
+          <img src="https://img.youtube.com/vi/FEsEKcwQ6wQ/hqdefault.jpg" alt="El cazo de Lorenzo" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="video-tag">Diversidad funcional</span>
+        </a>
+        <div class="video-info">
+          <h4>El Cazo de Lorenzo</h4>
+          <p>Una historia sobre diversidad y resiliencia. Lorenzo arrastra un cazo rojo que simboliza las dificultades que enfrentan muchos niños. Basado en el cuento de Isabelle Carrier.</p>
+          <a href="https://www.youtube.com/watch?v=FEsEKcwQ6wQ" target="_blank" rel="noopener" class="video-link">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
+          </a>
+        </div>
       </div>
-      <div class="house-level foundation" style="border-radius:0 0 14px 14px;">
-        <h4>Los Cimientos: Empatía Activa</h4>
-        <p>La capacidad de observar y validar emociones sin juzgar. Si los cimientos de la empatía fallan, las paredes del lenguaje se derrumban.</p>
+
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=2PPvWcocI6M" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
+          <img src="https://img.youtube.com/vi/2PPvWcocI6M/hqdefault.jpg" alt="Canción 4 esquinitas" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="video-tag">Animado</span>
+        </a>
+        <div class="video-info">
+          <h4>Canción Por 4 Esquinitas de Nada</h4>
+          <p>Versión animada y musical del cuento de Jérôme Ruillier. Perfecta para niños pequeños y para cantar en familia.</p>
+          <a href="https://www.youtube.com/watch?v=2PPvWcocI6M" target="_blank" rel="noopener" class="video-link">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Panel: Empatía -->
+  <div class="video-panel" id="vpanel-empatia">
+    <div class="video-grid">
+
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=QXQorU0o-eE" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
+          <img src="https://img.youtube.com/vi/QXQorU0o-eE/hqdefault.jpg" alt="El valor de la empatía" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="video-tag">Para niños</span>
+        </a>
+        <div class="video-info">
+          <h4>El Valor de la Empatía – Para niños y niñas</h4>
+          <p>Explica qué es la empatía con ejemplos y acciones concretas. Ideal para ver juntos en familia y comentar después.</p>
+          <a href="https://www.youtube.com/watch?v=QXQorU0o-eE" target="_blank" rel="noopener" class="video-link">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
+          </a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=2QUDtRJxLYo" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
+          <img src="https://img.youtube.com/vi/2QUDtRJxLYo/hqdefault.jpg" alt="Emociones y empatía niños" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="video-tag">Emociones</span>
+        </a>
+        <div class="video-info">
+          <h4>Emociones, Autoestima y Empatía para niños</h4>
+          <p>Video educativo para aprender las emociones básicas, mejorar la autoestima y descubrir qué es la empatía de forma divertida.</p>
+          <a href="https://www.youtube.com/watch?v=2QUDtRJxLYo" target="_blank" rel="noopener" class="video-link">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
+          </a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=GDoLU2e1Ad8" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
+          <img src="https://img.youtube.com/vi/GDoLU2e1Ad8/hqdefault.jpg" alt="Empatía y convivencia" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="video-tag">Convivencia</span>
+        </a>
+        <div class="video-info">
+          <h4>La Empatía y la Convivencia Escolar</h4>
+          <p>Reflexión sobre empatía y convivencia con preguntas para debatir en familia. Del programa Habilidades para la Vida.</p>
+          <a href="https://www.youtube.com/watch?v=GDoLU2e1Ad8" target="_blank" rel="noopener" class="video-link">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Panel: Sensibilización -->
+  <div class="video-panel" id="vpanel-sensibilizacion">
+    <div class="video-grid">
+
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=n0lJk0mm8X0" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
+          <img src="https://img.youtube.com/vi/n0lJk0mm8X0/hqdefault.jpg" alt="Inclusión educativa" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="video-tag">Educativo</span>
+        </a>
+        <div class="video-info">
+          <h4>¿Cómo enseñar a los niños a ser inclusivos?</h4>
+          <p>Video con la finalidad de motivar a los niños a respetar y aceptar a todos por igual. Excelente para iniciar conversaciones en familia.</p>
+          <a href="https://www.youtube.com/watch?v=n0lJk0mm8X0" target="_blank" rel="noopener" class="video-link">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
+          </a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=NSWy-mJfPcw" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
+          <img src="https://img.youtube.com/vi/NSWy-mJfPcw/hqdefault.jpg" alt="Semana de la inclusión" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="video-tag">Escuela inclusiva</span>
+        </a>
+        <div class="video-info">
+          <h4>Sensibilización sobre la Inclusión Educativa</h4>
+          <p>Elaborado por el equipo de orientación del CEIP Altagracia para la Semana de la Inclusión del Proyecto Erasmus+.</p>
+          <a href="https://www.youtube.com/watch?v=NSWy-mJfPcw" target="_blank" rel="noopener" class="video-link">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
+          </a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=YOSWwtk92Rc" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
+          <img src="https://img.youtube.com/vi/YOSWwtk92Rc/hqdefault.jpg" alt="Integración e inclusión" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="video-tag">Integración</span>
+        </a>
+        <div class="video-info">
+          <h4>Integración e Inclusión Educativa</h4>
+          <p>Video que explica la diferencia entre integración e inclusión, conceptos clave para entender el camino hacia una educación para todos.</p>
+          <a href="https://www.youtube.com/watch?v=YOSWwtk92Rc" target="_blank" rel="noopener" class="video-link">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================
+     INFORMACIÓN EXTRA
+     ============================ -->
+<div class="info-section" id="informacion">
+  <div class="info-inner">
+    <p class="section-title" style="color:var(--navy)">📚 Información complementaria</p>
+    <p class="section-lead" style="margin-bottom:1.5rem;">Amplía tu conocimiento sobre inclusión y diversidad.</p>
+
+    <div class="info-tabs">
+      <button class="itab active" onclick="showIPanel('mitos',this)">💡 Mitos y realidades</button>
+      <button class="itab" onclick="showIPanel('glosario',this)">📖 Glosario</button>
+      <button class="itab" onclick="showIPanel('actividades',this)">🎮 Actividades en familia</button>
+      <button class="itab" onclick="showIPanel('recursos',this)">🔗 Recursos</button>
+    </div>
+
+    <!-- Mitos y realidades -->
+    <div class="info-panel active" id="ipanel-mitos">
+      <div class="myth-item">
+        <div class="myth-box"><strong>❌ Mito</strong>"La inclusión beneficia solo a los niños con discapacidad."</div>
+        <div class="reality-box"><strong>✅ Realidad</strong>La inclusión enriquece a todos. Los niños aprenden a convivir, a respetar y a desarrollar empatía, habilidades esenciales para la vida.</div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-box"><strong>❌ Mito</strong>"Un niño diferente baja el nivel del grupo."</div>
+        <div class="reality-box"><strong>✅ Realidad</strong>La diversidad en el aula promueve la creatividad, la paciencia y el pensamiento crítico. Los grupos mixtos aprenden mejor juntos.</div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-box"><strong>❌ Mito</strong>"La inclusión es solo responsabilidad de la escuela."</div>
+        <div class="reality-box"><strong>✅ Realidad</strong>La familia es el primer espacio de inclusión. Los valores y actitudes aprendidos en casa determinan cómo el niño trata a los demás.</div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-box"><strong>❌ Mito</strong>"Los niños con dificultades de aprendizaje son menos inteligentes."</div>
+        <div class="reality-box"><strong>✅ Realidad</strong>Las dificultades de aprendizaje no están relacionadas con la inteligencia. Son formas distintas de procesar la información, nada más.</div>
+      </div>
+      <div class="myth-item">
+        <div class="myth-box"><strong>❌ Mito</strong>"Hablar de discapacidad con los niños los asusta o confunde."</div>
+        <div class="reality-box"><strong>✅ Realidad</strong>Los niños que aprenden sobre diversidad desde pequeños son más empáticos y menos propensos a discriminar o excluir.</div>
+      </div>
+    </div>
+
+    <!-- Glosario -->
+    <div class="info-panel" id="ipanel-glosario">
+      <div class="glossary-grid">
+        <div class="glossary-item"><div class="term">Inclusión</div><div class="def">Proceso por el cual todos los niños participan activamente en la vida escolar y social, con los apoyos necesarios, sin importar sus diferencias.</div></div>
+        <div class="glossary-item"><div class="term">Integración</div><div class="def">El niño "diferente" se incorpora a un grupo, pero sin que el entorno cambie para acogerlo. A diferencia de la inclusión, la carga de adaptación recae sobre el niño.</div></div>
+        <div class="glossary-item"><div class="term">Diversidad funcional</div><div class="def">Término alternativo a "discapacidad" que reconoce que las personas funcionan de manera diferente, sin que eso implique inferioridad.</div></div>
+        <div class="glossary-item"><div class="term">Empatía</div><div class="def">Capacidad de ponerse en el lugar del otro, comprender sus emociones y responder con respeto y compasión.</div></div>
+        <div class="glossary-item"><div class="term">TDAH</div><div class="def">Trastorno por Déficit de Atención e Hiperactividad. Condición neurológica que afecta la concentración y el control de impulsos. No es falta de voluntad.</div></div>
+        <div class="glossary-item"><div class="term">Dislexia</div><div class="def">Dificultad específica para la lectura y la escritura, no relacionada con la inteligencia. Con apoyo adecuado, los niños con dislexia logran grandes metas.</div></div>
+        <div class="glossary-item"><div class="term">Ajuste razonable</div><div class="def">Modificación o adaptación necesaria para que una persona con discapacidad pueda participar en igualdad de condiciones. Es un derecho reconocido internacionalmente.</div></div>
+        <div class="glossary-item"><div class="term">Barreras para la participación</div><div class="def">Obstáculos físicos, actitudinales o comunicacionales que impiden la plena participación de una persona en la vida social o escolar.</div></div>
+      </div>
+    </div>
+
+    <!-- Actividades en familia -->
+    <div class="info-panel" id="ipanel-actividades">
+      <div class="activity-list">
+        <div class="activity">
+          <div class="num">1</div>
+          <div>
+            <h4>El juego de los zapatos</h4>
+            <p>Cada miembro de la familia describe cómo sería su día si no pudiera ver, escuchar o caminar. Reflexionen juntos: ¿qué cambiarían en casa para ayudar a esa persona? Genera empatía real y conversaciones profundas.</p>
+            <span class="age-tag">Edad recomendada: 5+ años</span>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="num">2</div>
+          <div>
+            <h4>El libro de las diferencias</h4>
+            <p>Creen juntos un libro casero donde cada página muestra algo que hace especial a cada miembro de la familia: sus fortalezas, sus formas de aprender, sus gustos únicos. Celebren lo que los hace distintos.</p>
+            <span class="age-tag">Edad recomendada: 4–10 años</span>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="num">3</div>
+          <div>
+            <h4>La semana del lenguaje inclusivo</h4>
+            <p>Durante una semana, noten en familia cuándo usan palabras que etiquetan o excluyen. Cada vez que alguien lo haga, proponen juntos una forma de decirlo diferente. Es un ejercicio revelador para adultos y niños.</p>
+            <span class="age-tag">Edad recomendada: 7+ años</span>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="num">4</div>
+          <div>
+            <h4>Cine-foro en casa</h4>
+            <p>Vean uno de los videos o cuentos recomendados en esta página. Después, conversen: ¿Cómo se sintió el personaje? ¿Qué harías tú en su lugar? ¿Has vivido algo parecido? El diálogo después del video es lo más valioso.</p>
+            <span class="age-tag">Edad recomendada: todas las edades</span>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="num">5</div>
+          <div>
+            <h4>Mi superhéroe inclusivo</h4>
+            <p>Pídele al niño que dibuje o describa un superhéroe cuyo poder sea hacer que todos se sientan incluidos. ¿Qué poderes tiene? ¿Cómo actúa cuando alguien es excluido? Esta actividad proyecta valores de manera positiva.</p>
+            <span class="age-tag">Edad recomendada: 5–12 años</span>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="num">6</div>
+          <div>
+            <h4>El termómetro de las emociones</h4>
+            <p>Creen un termómetro en cartulina con emociones del 1 al 10. Cada día a la hora de la cena, cada uno mueve su marcador y explica cómo se sintió. Practica la validación emocional sin juzgar ni minimizar.</p>
+            <span class="age-tag">Edad recomendada: 4+ años</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recursos -->
+    <div class="info-panel" id="ipanel-recursos">
+      <div class="recursos-grid">
+        <div class="recurso libro">
+          <div class="tipo">📚 Libro</div>
+          <h4>Por cuatro esquinitas de nada</h4>
+          <p>Jérôme Ruillier. Ed. Juventud. Cuento sobre aceptación e inclusión. Ideal para niños de 3 a 8 años.</p>
+        </div>
+        <div class="recurso libro">
+          <div class="tipo">📚 Libro</div>
+          <h4>El cazo de Lorenzo</h4>
+          <p>Isabelle Carrier. Ed. Juventud. Metáfora visual sobre las dificultades cotidianas de un niño con diversidad funcional.</p>
+        </div>
+        <div class="recurso libro">
+          <div class="tipo">📚 Libro</div>
+          <h4>El principito</h4>
+          <p>Antoine de Saint-Exupéry. Clásico universal que trabaja la empatía, la amistad y ver con el corazón.</p>
+        </div>
+        <div class="recurso web">
+          <div class="tipo">🌐 Web</div>
+          <h4>UNESCO – Educación Inclusiva</h4>
+          <p>Guías, políticas y recursos sobre educación inclusiva para familias y comunidades. Disponible en español.</p>
+        </div>
+        <div class="recurso web">
+          <div class="tipo">🌐 Web</div>
+          <h4>Aula Intercultural</h4>
+          <p>aulaintercultural.org — Materiales educativos sobre diversidad, inclusión e interculturalidad para familias y docentes.</p>
+        </div>
+        <div class="recurso ong">
+          <div class="tipo">🤝 Organización</div>
+          <h4>Plena Inclusión Colombia</h4>
+          <p>Organización que trabaja por los derechos de las personas con discapacidad intelectual y sus familias.</p>
+        </div>
+        <div class="recurso ong">
+          <div class="tipo">🤝 Organización</div>
+          <h4>ICBF – Instituto Colombiano de Bienestar Familiar</h4>
+          <p>Programas de atención a la primera infancia con enfoque inclusivo y diferencial en Colombia.</p>
+        </div>
+        <div class="recurso libro">
+          <div class="tipo">📚 Guía</div>
+          <h4>Crianza con empatía</h4>
+          <p>Colección de guías del MEN (Ministerio de Educación Nacional) para familias sobre crianza positiva e inclusión.</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 14: Mi compromiso -->
+<!-- COMPROMISO -->
 <section id="compromiso" class="fade-up">
   <p class="section-title terracotta">Mi compromiso con la inclusión</p>
   <p class="section-lead">Escribe tus decisiones. Lleva este compromiso a casa.</p>
-
   <div class="compromiso-box fade-up">
     <div class="compromiso-field">
       <span class="field-icon">✏️</span>
@@ -1071,7 +845,7 @@
       </div>
     </div>
     <button class="btn-compromiso" onclick="guardarCompromiso()">Guardar mi compromiso 🌿</button>
-    <div id="compromiso-msg">¡Compromiso guardado! Gracias por dar este paso. 🌱</div>
+    <div id="compromiso-msg"></div>
   </div>
 </section>
 
@@ -1087,36 +861,41 @@
 </div>
 
 <script>
+  // Scroll animations
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.12 });
-
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+  // Video tabs
+  function showVPanel(id, btn) {
+    document.querySelectorAll('.video-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.vtab').forEach(b => b.classList.remove('active'));
+    document.getElementById('vpanel-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Info tabs
+  function showIPanel(id, btn) {
+    document.querySelectorAll('.info-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.itab').forEach(b => b.classList.remove('active'));
+    document.getElementById('ipanel-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Compromiso form
   function guardarCompromiso() {
     const accion = document.getElementById('accion').value.trim();
     const frase = document.getElementById('frase').value.trim();
     const practica = document.getElementById('practica').value.trim();
-
-    if (!accion && !frase && !practica) {
-      alert('Por favor escribe al menos uno de tus compromisos.');
-      return;
-    }
-
+    if (!accion && !frase && !practica) { alert('Por favor escribe al menos uno de tus compromisos.'); return; }
     const msg = document.getElementById('compromiso-msg');
+    const lines = [];
+    if (accion) lines.push('✏️ <strong>Cambiaré:</strong> ' + accion);
+    if (frase) lines.push('🚫 <strong>Evitaré:</strong> ' + frase);
+    if (practica) lines.push('🌱 <strong>Fomentaré:</strong> ' + practica);
+    msg.innerHTML = '<div style="background:#eef5e8;border-radius:12px;padding:1.2rem;margin-top:1rem;text-align:left;line-height:2">🌿 <strong>Compromiso registrado:</strong><br>' + lines.join('<br>') + '</div><p style="margin-top:0.75rem;color:var(--olive);font-size:0.95rem">¡Gracias por dar este paso hacia un hogar más inclusivo!</p>';
     msg.style.display = 'block';
-
-    setTimeout(() => {
-      const lines = [];
-      if (accion) lines.push('✏️ Acción: ' + accion);
-      if (frase) lines.push('🚫 Evitaré: ' + frase);
-      if (practica) lines.push('🌱 Fomentaré: ' + practica);
-      msg.innerHTML = '🌱 Compromiso registrado:<br><br>' + lines.join('<br>') + '<br><br>¡Gracias por dar este paso!';
-    }, 200);
   }
 </script>
 </body>
