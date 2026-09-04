@@ -1,902 +1,522 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Inclusión Comienza en Casa</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --cream: #f5f0e8;
-    --warm-white: #faf8f3;
-    --terracotta: #a0522d;
-    --terracotta-light: #c8724a;
-    --rust: #8b3a1a;
-    --olive: #5a6e3a;
-    --olive-light: #7a9052;
-    --sage: #8fa67a;
-    --sage-light: #c4d5b0;
-    --gold: #c4952a;
-    --gold-light: #e8c060;
-    --navy: #1e2d4a;
-    --navy-light: #2e4470;
-    --brown-dark: #3d2b1a;
-    --text-dark: #2a1f14;
-    --text-mid: #5c4030;
-    --text-light: #8a7060;
-    --shadow-warm: rgba(100,60,20,0.12);
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taller DUA y PIAR - Mi plan individual</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+      background: #f0f4f8;
+      color: #1e293b;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.07);
+      padding: 2.5rem;
+    }
+    h1 { font-size: 2.2rem; font-weight: 700; color: #0f3b5e; border-left: 6px solid #2b7a8a; padding-left: 1rem; margin-bottom: 0.5rem; }
+    .subtitulo { font-size: 1.1rem; color: #475569; margin-bottom: 2rem; border-bottom: 2px dashed #e2e8f0; padding-bottom: 1rem; }
+    h2 { font-size: 1.6rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e4a6b; border-bottom: 2px solid #dbeafe; padding-bottom: 0.4rem; }
+    h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.6rem; color: #2c5282; }
+    h4 { font-size: 1rem; margin-top: 1rem; font-weight: 600; color: #2d3748; }
+    p { line-height: 1.7; margin-bottom: 1rem; }
+    ul, ol { margin-left: 1.8rem; margin-bottom: 1.2rem; }
+    li { margin-bottom: 0.4rem; }
 
-  /* HERO */
-  .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; background: var(--warm-white); position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(90,110,58,0.10) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 20% 10%, rgba(160,82,45,0.07) 0%, transparent 60%); pointer-events: none; }
-  .hero-plant { font-size: 5rem; margin-bottom: 1.5rem; position: relative; z-index: 1; animation: float 4s ease-in-out infinite; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem,6vw,4.5rem); color: var(--terracotta); line-height: 1.15; max-width: 800px; position: relative; z-index: 1; }
-  .hero .subtitle { font-size: 1.25rem; font-weight: 300; color: var(--text-mid); margin-top: 1rem; letter-spacing: 0.04em; position: relative; z-index: 1; }
-  .hero .tagline { margin-top: 2.5rem; font-style: italic; color: var(--text-light); font-size: 1.05rem; position: relative; z-index: 1; }
-  .scroll-down { margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--sage); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; position: relative; z-index: 1; animation: bounce 2s ease-in-out infinite; }
-  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
-  .scroll-down svg { width: 24px; height: 24px; stroke: var(--sage); }
+    /* Tarjetas informativas */
+    .card {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid #2b7a8a;
+    }
+    .card-caso {
+      background: #fefce8;
+      border-left-color: #d97706;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .principio {
+      background: #f1f5f9;
+      border-radius: 16px;
+      padding: 1.2rem;
+    }
+    .principio h4 { color: #0f3b5e; }
+    .badge {
+      display: inline-block;
+      background: #2b7a8a;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      margin-right: 0.5rem;
+    }
 
-  /* NAV */
-  nav { position: sticky; top: 0; z-index: 100; background: rgba(250,248,243,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(90,110,58,0.15); padding: 0 2rem; }
-  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; flex-wrap: wrap; gap: 0.5rem; }
-  .nav-brand { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--terracotta); }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
-  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.85rem; font-weight: 400; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--terracotta); }
+    /* Estilos de formularios */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #1e4a6b;
+      font-size: 0.95rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1px solid #d1d9e6;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border 0.2s;
+      background: white;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #2b7a8a;
+      box-shadow: 0 0 0 3px rgba(43, 122, 138, 0.15);
+    }
+    textarea { min-height: 70px; resize: vertical; }
+    .form-card {
+      background: #fafcff;
+      border-radius: 20px;
+      padding: 1.8rem;
+      margin: 1.8rem 0;
+      border: 1px solid #e9edf4;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+    .btn {
+      background: #2b7a8a;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    .btn:hover { background: #1e5f6e; transform: scale(1.02); }
+    .btn-secundario {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+    .btn-secundario:hover { background: #cbd5e1; }
+    .btn-descarga {
+      background: #0f3b5e;
+      font-size: 1.1rem;
+      padding: 0.9rem 2.5rem;
+      box-shadow: 0 6px 16px rgba(15, 59, 94, 0.25);
+    }
+    .btn-descarga:hover { background: #1a4a70; }
+    .btn-eliminar {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+    }
+    .btn-eliminar:hover { background: #fecaca; }
 
-  /* SECTIONS */
-  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .section-full { max-width: 100%; padding: 5rem 2rem; background: var(--warm-white); }
-  .section-full .inner { max-width: 1000px; margin: 0 auto; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,3.5vw,2.5rem); color: var(--navy); margin-bottom: 0.5rem; }
-  .section-title.terracotta { color: var(--terracotta); }
-  .section-title.olive { color: var(--olive); }
-  .section-lead { font-size: 1.05rem; color: var(--text-light); margin-bottom: 3rem; max-width: 680px; font-style: italic; }
-  .quote-bar { border-left: 4px solid var(--gold); padding: 1rem 1.5rem; background: rgba(196,149,42,0.08); border-radius: 0 8px 8px 0; font-style: italic; color: var(--text-mid); margin: 2rem 0; font-size: 1.05rem; }
+    /* Lista de compromisos */
+    #lista-compromisos {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    #lista-compromisos li {
+      background: #f1f5f9;
+      padding: 0.6rem 1rem;
+      border-radius: 30px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-  /* CARDS */
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-  .card { background: white; border-radius: 16px; padding: 1.75rem; box-shadow: 0 2px 20px var(--shadow-warm); transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden; }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px var(--shadow-warm); }
-  .card .icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
-  .card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--navy); margin-bottom: 0.5rem; }
-  .card p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.65; }
-  .card.terracotta { border-top: 4px solid var(--terracotta); }
-  .card.olive { border-top: 4px solid var(--olive); }
-  .card.gold { border-top: 4px solid var(--gold); }
-  .card.navy { border-top: 4px solid var(--navy); }
+    /* Vista previa del resumen */
+    #resumen-individual {
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      display: none;
+    }
+    #resumen-individual.visible { display: block; }
+    #resumen-individual h3 { color: #065f46; margin-top: 1.2rem; }
+    #resumen-individual hr { margin: 1.5rem 0; border: 1px dashed #bbf7d0; }
 
-  /* CYCLE */
-  .cycle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
-  @media(max-width:600px){.cycle-grid{grid-template-columns:1fr}}
-  .cycle-item { display: flex; align-items: flex-start; gap: 1rem; background: white; border-radius: 14px; padding: 1.5rem; box-shadow: 0 2px 16px var(--shadow-warm); }
-  .cycle-icon { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
-  .cycle-icon.bg-terracotta { background: rgba(160,82,45,0.12); }
-  .cycle-icon.bg-navy { background: rgba(30,45,74,0.10); }
-  .cycle-icon.bg-olive { background: rgba(90,110,58,0.12); }
-  .cycle-icon.bg-gold { background: rgba(196,149,42,0.12); }
-  .cycle-item h4 { font-weight: 700; color: var(--navy); margin-bottom: 0.25rem; }
-  .cycle-item p { font-size: 0.9rem; color: var(--text-mid); }
+    .reflexion-box {
+      background: #fff7ed;
+      border-left: 6px solid #ea580c;
+      padding: 1.2rem 1.8rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+    }
 
-  /* TABLE */
-  .compare-wrap { overflow-x: auto; margin-top: 2rem; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 20px var(--shadow-warm); }
-  th { padding: 1rem 1.25rem; font-weight: 700; text-align: left; font-size: 1rem; }
-  th.exclusion { background: #a0522d; color: white; }
-  th.integracion { background: #c4952a; color: white; }
-  th.inclusion { background: #5a6e3a; color: white; }
-  th.row-header { background: var(--cream); color: var(--text-dark); width: 120px; }
-  td { padding: 1rem 1.25rem; border-top: 1px solid rgba(0,0,0,0.06); vertical-align: top; color: var(--text-mid); }
-  tr:nth-child(even) td { background: rgba(245,240,232,0.4); }
-  .tag-x { color: #a0522d; font-weight: 700; }
-  .tag-warn { color: #c4952a; font-weight: 700; }
-  .tag-ok { color: #5a6e3a; font-weight: 700; }
-
-  /* TOGGLE LIST */
-  .toggle-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
-  @media(max-width:640px){.toggle-list{grid-template-columns:1fr}}
-  .toggle-col h3 { font-size: 1rem; font-weight: 700; padding: 0.7rem 1.2rem; border-radius: 10px 10px 0 0; margin-bottom: 0; }
-  .toggle-col.red h3 { background: #a0522d; color: white; }
-  .toggle-col.green h3 { background: #5a6e3a; color: white; }
-  .toggle-items { background: white; border-radius: 0 0 12px 12px; overflow: hidden; box-shadow: 0 2px 16px var(--shadow-warm); }
-  .toggle-item { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.2rem; border-top: 1px solid rgba(0,0,0,0.06); font-size: 0.92rem; color: var(--text-mid); }
-  .toggle-item .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .toggle-col.red .dot { background: #a0522d; }
-  .toggle-col.green .dot { background: #5a6e3a; }
-
-  /* STEPS */
-  .steps { display: flex; gap: 0; margin-top: 2rem; position: relative; }
-  @media(max-width:680px){.steps{flex-direction:column;gap:2rem}.steps::before{display:none}}
-  .steps::before { content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 3px; background: linear-gradient(90deg,var(--terracotta),var(--gold),var(--olive)); z-index: 0; }
-  .step { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1; padding: 0 1rem; }
-  .step-num { width: 80px; height: 80px; border-radius: 50%; font-size: 2rem; background: white; box-shadow: 0 4px 20px var(--shadow-warm); margin-bottom: 1rem; border: 3px solid; display: flex; align-items: center; justify-content: center; }
-  .step:nth-child(1) .step-num { border-color: var(--terracotta); }
-  .step:nth-child(2) .step-num { border-color: var(--gold); }
-  .step:nth-child(3) .step-num { border-color: var(--olive); }
-  .step h4 { font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; font-size: 1rem; }
-  .step p { font-size: 0.88rem; color: var(--text-mid); }
-
-  /* STATIONS */
-  .station { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 2px 20px var(--shadow-warm); margin-bottom: 1.5rem; border-left: 6px solid; transition: transform 0.2s; }
-  .station:hover { transform: translateX(4px); }
-  .station.s1 { border-color: var(--terracotta); }
-  .station.s2 { border-color: var(--navy); }
-  .station.s3 { border-color: var(--gold); }
-  .station h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 0.5rem; }
-  .station .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
-  .s1 .badge { background: rgba(160,82,45,0.12); color: var(--terracotta); }
-  .s2 .badge { background: rgba(30,45,74,0.10); color: var(--navy); }
-  .s3 .badge { background: rgba(196,149,42,0.12); color: #8a6010; }
-  .station p { color: var(--text-mid); font-size: 0.95rem; }
-  .station .emotion { margin-top: 0.75rem; font-weight: 700; font-size: 1.05rem; }
-  .s1 .emotion { color: var(--terracotta); }
-  .s2 .emotion { color: var(--navy); }
-  .s3 .emotion { color: var(--gold); }
-
-  /* HOUSE */
-  .house { display: flex; flex-direction: column; gap: 0; margin-top: 2rem; max-width: 640px; margin-left: auto; margin-right: auto; }
-  .house-level { padding: 1.5rem 2rem; }
-  .house-level.roof { background: var(--olive); clip-path: polygon(0 30%,50% 0,100% 30%,100% 100%,0 100%); padding-top: 3.5rem; text-align: center; border-radius: 14px 14px 0 0; }
-  .house-level.walls { background: #c8724a18; border-left: 2px solid #c8724a44; border-right: 2px solid #c8724a44; }
-  .house-level.foundation { background: var(--navy); border-radius: 0 0 14px 14px; }
-  .house-level h4 { font-weight: 700; margin-bottom: 0.3rem; font-size: 1.05rem; }
-  .house-level.roof h4 { color: white; }
-  .house-level.walls h4 { color: var(--terracotta); }
-  .house-level.foundation h4 { color: var(--sage-light); }
-  .house-level p { font-size: 0.9rem; }
-  .house-level.roof p { color: rgba(255,255,255,0.88); }
-  .house-level.walls p { color: var(--text-mid); }
-  .house-level.foundation p { color: rgba(255,255,255,0.75); }
-
-  /* ============================
-     VIDEOS SECTION
-     ============================ */
-  .videos-section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .video-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
-  .vtab { background: white; border: 2px solid rgba(90,110,58,0.2); border-radius: 30px; padding: 0.5rem 1.2rem; font-size: 0.88rem; font-weight: 700; cursor: pointer; color: var(--text-mid); transition: all 0.2s; font-family: 'Lato', sans-serif; }
-  .vtab.active, .vtab:hover { background: var(--olive); color: white; border-color: var(--olive); }
-  .video-panel { display: none; }
-  .video-panel.active { display: block; }
-  .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
-  .video-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 20px var(--shadow-warm); transition: transform 0.25s, box-shadow 0.25s; }
-  .video-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px var(--shadow-warm); }
-  .video-thumb { position: relative; padding-top: 56.25%; background: #e8e0d4; cursor: pointer; }
-  .video-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .video-thumb .play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(30,45,74,0.35); transition: background 0.2s; }
-  .video-thumb:hover .play-btn { background: rgba(30,45,74,0.55); }
-  .play-btn svg { width: 56px; height: 56px; fill: white; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
-  .video-tag { position: absolute; top: 10px; left: 10px; background: var(--terracotta); color: white; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .video-info { padding: 1.25rem; }
-  .video-info h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); margin-bottom: 0.4rem; line-height: 1.35; }
-  .video-info p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; line-height: 1.5; }
-  .video-link { display: inline-flex; align-items: center; gap: 0.4rem; background: #FF0000; color: white; text-decoration: none; padding: 0.45rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 700; transition: opacity 0.2s; }
-  .video-link:hover { opacity: 0.85; }
-  .video-link svg { width: 16px; height: 16px; fill: white; }
-
-  /* ============================
-     INFO EXTRA
-     ============================ */
-  .info-section { background: var(--warm-white); padding: 5rem 2rem; }
-  .info-inner { max-width: 1000px; margin: 0 auto; }
-  .info-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-  .itab { background: white; border: 2px solid rgba(30,45,74,0.15); border-radius: 30px; padding: 0.5rem 1.2rem; font-size: 0.88rem; font-weight: 700; cursor: pointer; color: var(--text-mid); transition: all 0.2s; font-family: 'Lato', sans-serif; }
-  .itab.active, .itab:hover { background: var(--navy); color: white; border-color: var(--navy); }
-  .info-panel { display: none; }
-  .info-panel.active { display: block; animation: fadeIn 0.4s ease; }
-  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-
-  /* Mitos y realidades */
-  .myth-item { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-  @media(max-width:600px){.myth-item{grid-template-columns:1fr}}
-  .myth-box, .reality-box { padding: 1.2rem 1.4rem; border-radius: 12px; font-size: 0.93rem; line-height: 1.6; }
-  .myth-box { background: #fff0eb; border-left: 4px solid var(--terracotta); color: var(--text-mid); }
-  .reality-box { background: #eef5e8; border-left: 4px solid var(--olive); color: var(--text-mid); }
-  .myth-box strong, .reality-box strong { display: block; margin-bottom: 0.3rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; }
-  .myth-box strong { color: var(--terracotta); }
-  .reality-box strong { color: var(--olive); }
-
-  /* Glosario */
-  .glossary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-  .glossary-item { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 12px var(--shadow-warm); }
-  .glossary-item .term { font-weight: 700; color: var(--navy); font-size: 1rem; margin-bottom: 0.3rem; }
-  .glossary-item .def { font-size: 0.88rem; color: var(--text-mid); line-height: 1.55; }
-
-  /* Actividades */
-  .activity-list { display: flex; flex-direction: column; gap: 1.2rem; }
-  .activity { background: white; border-radius: 14px; padding: 1.5rem; box-shadow: 0 2px 16px var(--shadow-warm); display: flex; gap: 1.2rem; align-items: flex-start; }
-  .activity .num { width: 44px; height: 44px; border-radius: 50%; background: var(--terracotta); color: white; font-weight: 700; font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .activity h4 { font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
-  .activity p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
-  .activity .age-tag { display: inline-block; background: rgba(196,149,42,0.15); color: #7a5c0a; font-size: 0.75rem; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-top: 0.5rem; }
-
-  /* Recursos */
-  .recursos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-  .recurso { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 12px var(--shadow-warm); border-top: 4px solid; }
-  .recurso.libro { border-color: var(--terracotta); }
-  .recurso.web { border-color: var(--olive); }
-  .recurso.ong { border-color: var(--gold); }
-  .recurso .tipo { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
-  .recurso.libro .tipo { color: var(--terracotta); }
-  .recurso.web .tipo { color: var(--olive); }
-  .recurso.ong .tipo { color: #8a6010; }
-  .recurso h4 { font-weight: 700; color: var(--navy); font-size: 0.95rem; margin-bottom: 0.3rem; line-height: 1.3; }
-  .recurso p { font-size: 0.82rem; color: var(--text-mid); line-height: 1.5; }
-
-  /* COMPROMISO */
-  .compromiso-box { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 4px 40px var(--shadow-warm); max-width: 640px; margin: 2rem auto 0; }
-  .compromiso-field { display: flex; align-items: center; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
-  .compromiso-field:last-of-type { border-bottom: none; }
-  .compromiso-field .field-icon { font-size: 1.8rem; flex-shrink: 0; width: 40px; text-align: center; }
-  .compromiso-field label { font-size: 0.9rem; color: var(--text-mid); display: block; margin-bottom: 0.3rem; }
-  .compromiso-field input { width: 100%; border: none; border-bottom: 2px solid var(--sage-light); padding: 0.4rem 0; font-size: 1rem; font-family: 'Lato', sans-serif; outline: none; background: transparent; color: var(--text-dark); transition: border-color 0.2s; }
-  .compromiso-field input:focus { border-color: var(--olive); }
-  .btn-compromiso { display: block; width: 100%; margin-top: 2rem; padding: 1rem; background: var(--olive); color: white; border: none; border-radius: 12px; font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; cursor: pointer; font-family: 'Lato', sans-serif; transition: background 0.2s, transform 0.1s; }
-  .btn-compromiso:hover { background: var(--rust); transform: scale(1.01); }
-  #compromiso-msg { display: none; text-align: center; margin-top: 1rem; color: var(--olive); font-weight: 700; font-size: 1rem; }
-
-  /* CIERRE */
-  .cierre { text-align: center; padding: 6rem 2rem; background: var(--navy); position: relative; overflow: hidden; }
-  .cierre::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(90,110,58,0.25) 0%, transparent 70%); pointer-events: none; }
-  .cierre h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,4vw,3rem); color: white; max-width: 700px; margin: 0 auto 1rem; line-height: 1.3; position: relative; }
-  .cierre p { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 520px; margin: 0 auto 2.5rem; position: relative; }
-  .cierre .tips { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
-  .cierre .tip { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 0.6rem 1.2rem; color: rgba(255,255,255,0.85); font-size: 0.9rem; }
-
-  /* FADE ANIMATION */
-  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-  @media(max-width:480px){.cycle-grid{grid-template-columns:1fr}.steps{flex-direction:column;gap:2rem}.steps::before{display:none}}
-</style>
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #64748b;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 1.5rem;
+      text-align: center;
+    }
+    .aviso-guardado {
+      font-size: 0.85rem;
+      color: #2b7a8a;
+      background: #e2f3f5;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+    }
+    @media (max-width: 640px) {
+      .container { padding: 1.2rem; }
+      h1 { font-size: 1.8rem; }
+    }
+  </style>
 </head>
 <body>
+<div class="container">
 
-<!-- HERO -->
-<div class="hero" id="inicio">
-  <div class="hero-plant">🌱</div>
-  <h1>La inclusión comienza en casa</h1>
-  <p class="subtitle">Guía práctica y taller para familias</p>
-  <p class="tagline">Un espacio para observar, entender y crecer juntos.</p>
-  <div class="scroll-down">
-    <span>Explorar</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  <h1>📘 Taller: DUA y PIAR en acción</h1>
+  <div class="subtitulo">
+    Diseño Universal para el Aprendizaje · Plan Individual de Ajustes Razonables
+    <br><span style="background: #dbeafe; padding: 0.2rem 1rem; border-radius: 20px; font-size: 0.9rem; display: inline-block; margin-top: 0.3rem;">📌 Modalidad individual – Completa tus respuestas y descarga tu plan</span>
+    <span class="aviso-guardado" style="margin-left: 1rem;">💾 Guardado automático en tu navegador</span>
   </div>
-</div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <span class="nav-brand">🌿 La Inclusión</span>
-    <ul class="nav-links">
-      <li><a href="#diferencia">La diferencia</a></li>
-      <li><a href="#que-es">¿Qué es?</a></li>
-      <li><a href="#hogar">El hogar</a></li>
-      <li><a href="#videos">Videos</a></li>
-      <li><a href="#informacion">Información</a></li>
-      <li><a href="#compromiso">Mi compromiso</a></li>
-    </ul>
+  <!-- ========================================================== -->
+  <h2>🔹 1. Principios del DUA (referencia)</h2>
+  <div class="grid-3">
+    <div class="principio"><h4>🔸 Implicación</h4><p>Interés, esfuerzo, autorregulación. Ej: elegir temas, gamificación.</p></div>
+    <div class="principio"><h4>🔸 Representación</h4><p>Percepción, lenguaje, comprensión. Ej: audio, video, pictogramas.</p></div>
+    <div class="principio"><h4>🔸 Acción y expresión</h4><p>Acción física, expresión, fluidez. Ej: respuestas orales, dibujos, maquetas.</p></div>
   </div>
-</nav>
 
-<!-- SLIDE 2: Todos hemos sido diferentes -->
-<section id="diferencia" class="fade-up">
-  <p class="section-title terracotta">Todos en algún momento hemos sido diferentes</p>
-  <p class="section-lead">Antes de hablar de inclusión, vale la pena mirar hacia adentro.</p>
-  <div class="card-grid">
-    <div class="card terracotta fade-up">
-      <span class="icon">🧒</span>
-      <h3>¿Qué te hacía diferente cuando eras niño?</h3>
-      <p>Todos llevamos una experiencia de ser distintos. Reconocerla es el primer paso para empatizar con quienes hoy viven esa diferencia.</p>
+  <!-- ========================================================== -->
+  <h2>🔹 2. Casos para análisis (referencia)</h2>
+  <div class="grid-3">
+    <div class="card card-caso"><h4>🏫 Caso 1 – Los Pinos</h4><p>Sofía, 9 años. Barreras: dislexia, frustración, bajo interés en lectura.</p></div>
+    <div class="card card-caso"><h4>🌾 Caso 2 – El Valle</h4><p>Julián, 14 años. Barreras: TDAH, atención, distracción por ruido.</p></div>
+    <div class="card card-caso"><h4>🧩 Caso 3 – Crecer</h4><p>Mateo, 12 años (autismo). Barreras: hipersensibilidad, comunicación limitada.</p></div>
+  </div>
+
+  <!-- ========================================================== -->
+  <h2>🔹 3. Mi reflexión sobre los casos</h2>
+  <div class="form-card">
+    <div class="form-group">
+      <label>🧠 ¿Qué principio DUA aplicarías en el Caso 1 (Sofía) y cómo?</label>
+      <textarea id="reflexion_caso1" placeholder="Escribe tu propuesta..."></textarea>
     </div>
-    <div class="card gold fade-up">
-      <span class="icon">💬</span>
-      <h3>¿Alguna vez te sentiste excluido? ¿Por qué?</h3>
-      <p>La exclusión deja huella. Recordarla nos ayuda a comprender lo que sienten los niños cuando no son incluidos en los juegos, los grupos o las conversaciones.</p>
+    <div class="form-group">
+      <label>🧠 ¿Qué principio DUA aplicarías en el Caso 2 (Julián) y cómo?</label>
+      <textarea id="reflexion_caso2" placeholder="Escribe tu propuesta..."></textarea>
     </div>
-    <div class="card olive fade-up">
-      <span class="icon">🤝</span>
-      <h3>¿Qué te hubiera gustado que hicieran por ti?</h3>
-      <p>La respuesta a esa pregunta es el mejor mapa para actuar hoy con los niños y niñas que nos rodean.</p>
-    </div>
-  </div>
-  <div class="quote-bar fade-up">La inclusión empieza cuando dejamos de ver la diferencia como un problema.</div>
-</section>
-
-<!-- SLIDE 3: Diversidad cotidiana -->
-<div class="section-full fade-up">
-  <div class="inner">
-    <p class="section-title olive">La Diversidad Cotidiana</p>
-    <p class="section-lead">"Todos los niños son diferentes, incluso dentro de la misma familia."</p>
-    <div class="card-grid">
-      <div class="card navy fade-up"><span class="icon">🖐️</span><h3>Diferencias físicas</h3><p>Altura, fuerza, coordinación, visión, audición… La diversidad corporal es la norma, no la excepción.</p></div>
-      <div class="card terracotta fade-up"><span class="icon">📚</span><h3>Dificultades de aprendizaje</h3><p>Dislexia, TDAH, discalculia… muchos niños procesan la información de manera diferente y necesitan apoyo específico.</p></div>
-      <div class="card gold fade-up"><span class="icon">🐌</span><h3>Ritmos distintos</h3><p>Algunos aprenden más despacio, otros en ráfagas. El ritmo no define la capacidad ni el potencial del niño.</p></div>
-      <div class="card olive fade-up"><span class="icon">🌍</span><h3>Cultura, costumbres y lenguaje</h3><p>Origen, tradiciones familiares, idioma materno... la identidad cultural es parte de quiénes somos.</p></div>
-      <div class="card terracotta fade-up" style="grid-column:1/-1;max-width:400px;margin:0 auto;"><span class="icon">😶</span><h3>Personalidad</h3><p>Niños tímidos, hiperactivos, introvertidos, muy sensibles... la personalidad no es un defecto a corregir.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 4: ¿Qué exige la inclusión? -->
-<section id="que-es" class="fade-up">
-  <p class="section-title" style="color:var(--navy)">¿Qué exige verdaderamente la inclusión?</p>
-  <p class="section-lead">No se trata de que el niño se adapte al entorno, sino de que el entorno también se adapte al niño.</p>
-  <div class="cycle-grid">
-    <div class="cycle-item fade-up"><div class="cycle-icon bg-navy">🔍</div><div><h4>Reconocer</h4><p>Que todas las personas son diferentes y que esa diferencia es válida y valiosa.</p></div></div>
-    <div class="cycle-item fade-up"><div class="cycle-icon bg-terracotta">❤️</div><div><h4>Respetar</h4><p>Esas diferencias sin burlas, sin rechazo, sin comparaciones ni etiquetas.</p></div></div>
-    <div class="cycle-item fade-up"><div class="cycle-icon bg-olive">⚙️</div><div><h4>Adaptar</h4><p>Espacios, normas y actitudes para facilitar la participación de todos.</p></div></div>
-    <div class="cycle-item fade-up"><div class="cycle-icon bg-gold">⭐</div><div><h4>Valorar</h4><p>Lo que cada persona aporta, desde sus propias fortalezas y talentos únicos.</p></div></div>
-  </div>
-</section>
-
-<!-- SLIDE 5: Exclusión vs Integración vs Inclusión -->
-<div class="section-full fade-up">
-  <div class="inner">
-    <p class="section-title">Identificando la brecha</p>
-    <p class="section-lead">Exclusión vs Integración vs Inclusión — no son lo mismo.</p>
-    <div class="compare-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th class="row-header"></th>
-            <th class="exclusion">❌ Exclusión</th>
-            <th class="integracion">⚠️ Integración</th>
-            <th class="inclusion">✅ Inclusión</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>La Acción</strong></td>
-            <td>El niño no participa (queda por fuera).</td>
-            <td>El niño participa, pero sin apoyo.</td>
-            <td>Todos participan con apoyo y respeto.</td>
-          </tr>
-          <tr>
-            <td><strong>El Entorno</strong></td>
-            <td>No hay cambios.</td>
-            <td>El entorno se mantiene igual.</td>
-            <td>El entorno cambia y se adapta.</td>
-          </tr>
-          <tr>
-            <td><strong>La Frase Típica</strong></td>
-            <td><span class="tag-x">Él no juega porque es muy lento.</span></td>
-            <td><span class="tag-warn">Déjenlo jugar, pero no cambiamos nada.</span></td>
-            <td><span class="tag-ok">Vamos a cambiar las reglas para que todos jueguen.</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="quote-bar fade-up" style="margin-top:2rem;border-color:var(--navy);background:rgba(30,45,74,0.07);">
-      <strong>Incluir no es hacer un favor, es garantizar un derecho.</strong>
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 6: El hogar -->
-<section id="hogar" class="fade-up">
-  <p class="section-title olive">El hogar es el primer incubador</p>
-  <p class="section-lead">Lo que el niño vive en casa, lo repite en la escuela.</p>
-  <div class="card-grid">
-    <div class="card navy fade-up"><span class="icon">💧</span><h3>El Lenguaje</h3><p>Frases como "ese niño es raro" o "no se junte con él" generan rechazo invisible que se transfiere directamente al aula.</p></div>
-    <div class="card terracotta fade-up"><span class="icon">🧠</span><h3>Las Actitudes</h3><p>Burlarse, comparar hermanos o ignorar emociones enseña a hacer lo mismo fuera del hogar.</p></div>
-    <div class="card olive fade-up"><span class="icon">🌿</span><h3>Los Valores</h3><p>El respeto, la empatía y la solidaridad se enseñan con el ejemplo diario, no con discursos ni charlas.</p></div>
-  </div>
-</section>
-
-<!-- SLIDE 7: Errores vs Acciones -->
-<div class="section-full fade-up">
-  <div class="inner">
-    <p class="section-title">Ajustes cotidianos: De los errores a las acciones</p>
-    <p class="section-lead">La inclusión no es un tema del colegio, es una forma de vivir en familia.</p>
-    <div class="toggle-list">
-      <div class="toggle-col red fade-up">
-        <h3>🔴 Errores comunes</h3>
-        <div class="toggle-items">
-          <div class="toggle-item"><span class="dot"></span> Comparar a los hijos constantemente.</div>
-          <div class="toggle-item"><span class="dot"></span> Minimizar emociones o pensar que "eso no es importante".</div>
-          <div class="toggle-item"><span class="dot"></span> Usar etiquetas como lento, problemático o raro.</div>
-          <div class="toggle-item"><span class="dot"></span> No corregir burlas entre hermanos.</div>
-        </div>
-      </div>
-      <div class="toggle-col green fade-up">
-        <h3>🟢 Acciones prácticas</h3>
-        <div class="toggle-items">
-          <div class="toggle-item"><span class="dot"></span> Escuchar a los hijos sin juzgar.</div>
-          <div class="toggle-item"><span class="dot"></span> Validar emociones en tiempo real.</div>
-          <div class="toggle-item"><span class="dot"></span> Hablar abiertamente sobre la diversidad.</div>
-          <div class="toggle-item"><span class="dot"></span> Corregir comentarios negativos inmediatamente.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 8: Fórmula de la empatía -->
-<section class="fade-up">
-  <p class="section-title" style="color:var(--terracotta)">La Fórmula de la Empatía</p>
-  <p class="section-lead">Un niño empático no nace, se forma en casa.</p>
-  <div class="steps">
-    <div class="step fade-up"><div class="step-num">👁️</div><h4>Paso 1: Observar</h4><p>Ponerse en el lugar del otro. ¿Qué siente? ¿Qué necesita?</p></div>
-    <div class="step fade-up"><div class="step-num">🧠</div><h4>Paso 2: Procesar</h4><p>Entender cómo se siente internamente esa persona.</p></div>
-    <div class="step fade-up"><div class="step-num">🤝</div><h4>Paso 3: Actuar</h4><p>Responder con respeto y apoyo genuino.</p></div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;">
-    <div style="background:#fff0eb;border-radius:12px;padding:1.25rem;border-left:4px solid var(--terracotta);">
-      <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.3rem;">❌ Falta de empatía:</p>
-      <p style="color:var(--text-mid);font-style:italic;">"No llore por eso."</p>
-    </div>
-    <div style="background:#eef5e8;border-radius:12px;padding:1.25rem;border-left:4px solid var(--olive);">
-      <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:0.3rem;">✅ Empatía activa:</p>
-      <p style="color:var(--text-mid);font-style:italic;">"Entiendo que te sientes mal, ¿quieres que te ayude?"</p>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDES 9-10: Taller -->
-<div class="section-full fade-up" id="taller">
-  <div class="inner">
-    <p class="section-title">Taller: Ponte en sus zapatos</p>
-    <p class="section-lead">Tres estaciones para experimentar lo que viven muchos niños cada día.</p>
-    <div class="station s1 fade-up">
-      <span class="badge">Estación 1</span>
-      <h3>Dificultades de aprendizaje</h3>
-      <p>Intentar leer un texto mezclado con números bajo presión de tiempo genera:</p>
-      <div class="emotion">😖 Frustración y confusión</div>
-      <p style="margin-top:0.5rem;font-size:0.88rem;color:var(--text-light);">Esta es la realidad de muchos niños en el aula todos los días.</p>
-    </div>
-    <div class="station s2 fade-up">
-      <span class="badge">Estación 2</span>
-      <h3>Discapacidad Visual</h3>
-      <p>Escribir o dibujar sin ver genera:</p>
-      <div class="emotion">😰 Inseguridad y dependencia</div>
-      <p style="margin-top:0.5rem;font-size:0.88rem;color:var(--text-light);">Sin apoyo adecuado, la autonomía se convierte en un obstáculo constante.</p>
-    </div>
-    <div class="station s3 fade-up">
-      <span class="badge">Estación 3</span>
-      <h3>Dificultad Auditiva</h3>
-      <p>Seguir instrucciones en un entorno caótico y ruidoso genera:</p>
-      <div class="emotion">😵 Desorientación profunda</div>
-      <p style="margin-top:0.5rem;font-size:0.88rem;color:var(--text-light);">Ahora imaginen sentir esto todos los días. ¿Qué necesitarían de su entorno?</p>
-    </div>
-  </div>
-</div>
-
-<!-- Árbol de problemas -->
-<section class="fade-up">
-  <p class="section-title olive">Herramienta: El Árbol de Problemas</p>
-  <p class="section-lead">Identificando situaciones de exclusión para proponer soluciones desde casa.</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:2rem;">
-    <div class="card fade-up" style="border-top:4px solid #5a6e3a;"><span class="icon">🌱</span><h3>Las Raíces (Causas)</h3><p>¿Por qué ocurre esto en casa? Ej. Creencias erróneas, falta de información, lenguaje negativo.</p></div>
-    <div class="card fade-up" style="border-top:4px solid var(--terracotta);"><span class="icon">🌳</span><h3>El Tronco (Problema central)</h3><p>La acción excluyente visible. Ej. Discriminación y burlas entre hermanos.</p></div>
-    <div class="card fade-up" style="border-top:4px solid var(--gold);"><span class="icon">🍃</span><h3>Las Ramas (Consecuencias)</h3><p>¿Qué genera esto en los niños? Ej. Baja autoestima, normalización de la violencia, aislamiento.</p></div>
-    <div class="card fade-up" style="border-top:4px solid var(--navy);"><span class="icon">🍊</span><h3>Los Frutos (Soluciones)</h3><p>¿Qué podemos hacer desde hoy? Ej. Corregir el lenguaje, intervenir ante las burlas.</p></div>
-  </div>
-  <div class="quote-bar fade-up" style="margin-top:2rem;">Los cambios pequeños en las raíces de casa generan grandes transformaciones en las ramas de la escuela.</div>
-</section>
-
-<!-- Kit del Hogar Inclusivo -->
-<div class="section-full fade-up">
-  <div class="inner">
-    <p class="section-title" style="color:var(--navy)">El Kit de Herramientas del Hogar Inclusivo</p>
-    <p class="section-lead">Esta es tu arquitectura diaria. Si los cimientos de la empatía fallan, las paredes del lenguaje se derrumban.</p>
-    <div class="house">
-      <div class="house-level roof"><h4>🏠 El Techo: Inclusión Práctica</h4><p>Adaptar el entorno, promover juegos donde todos participen, hablar de diversidad con naturalidad.</p></div>
-      <div class="house-level walls"><h4>Las Paredes: Lenguaje y Actitudes</h4><p>Evitar etiquetas, corregir burlas, dar el ejemplo con el trato a los demás.</p></div>
-      <div class="house-level foundation"><h4>Los Cimientos: Empatía Activa</h4><p>La capacidad de observar y validar emociones sin juzgar.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================
-     VIDEOS SECTION
-     ============================ -->
-<div class="videos-section fade-up" id="videos">
-  <p class="section-title" style="color:var(--navy)">📺 Videos recomendados</p>
-  <p class="section-lead" style="margin-bottom:1.5rem;">Recursos audiovisuales seleccionados para trabajar la inclusión en familia.</p>
-
-  <div class="video-tabs">
-    <button class="vtab active" onclick="showVPanel('cuentos',this)">📖 Cuentos animados</button>
-    <button class="vtab" onclick="showVPanel('empatia',this)">💚 Empatía</button>
-    <button class="vtab" onclick="showVPanel('sensibilizacion',this)">🌍 Sensibilización</button>
-  </div>
-
-  <!-- Panel: Cuentos animados -->
-  <div class="video-panel active" id="vpanel-cuentos">
-    <div class="video-grid">
-
-      <div class="video-card">
-        <a href="https://www.youtube.com/watch?v=dx9J2Pq_tUs" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
-          <img src="https://img.youtube.com/vi/dx9J2Pq_tUs/hqdefault.jpg" alt="Por 4 esquinitas de nada" loading="lazy">
-          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <span class="video-tag">Cuento clásico</span>
-        </a>
-        <div class="video-info">
-          <h4>Por 4 esquinitas de nada</h4>
-          <p>El clásico cuento de Jérôme Ruillier sobre un cuadradito que quiere jugar con sus amigos redondos. Ideal para hablar de inclusión y diversidad.</p>
-          <a href="https://www.youtube.com/watch?v=dx9J2Pq_tUs" target="_blank" rel="noopener" class="video-link">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
-          </a>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <a href="https://www.youtube.com/watch?v=FEsEKcwQ6wQ" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
-          <img src="https://img.youtube.com/vi/FEsEKcwQ6wQ/hqdefault.jpg" alt="El cazo de Lorenzo" loading="lazy">
-          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <span class="video-tag">Diversidad funcional</span>
-        </a>
-        <div class="video-info">
-          <h4>El Cazo de Lorenzo</h4>
-          <p>Una historia sobre diversidad y resiliencia. Lorenzo arrastra un cazo rojo que simboliza las dificultades que enfrentan muchos niños. Basado en el cuento de Isabelle Carrier.</p>
-          <a href="https://www.youtube.com/watch?v=FEsEKcwQ6wQ" target="_blank" rel="noopener" class="video-link">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
-          </a>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <a href="https://www.youtube.com/watch?v=2PPvWcocI6M" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
-          <img src="https://img.youtube.com/vi/2PPvWcocI6M/hqdefault.jpg" alt="Canción 4 esquinitas" loading="lazy">
-          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <span class="video-tag">Animado</span>
-        </a>
-        <div class="video-info">
-          <h4>Canción Por 4 Esquinitas de Nada</h4>
-          <p>Versión animada y musical del cuento de Jérôme Ruillier. Perfecta para niños pequeños y para cantar en familia.</p>
-          <a href="https://www.youtube.com/watch?v=2PPvWcocI6M" target="_blank" rel="noopener" class="video-link">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
-          </a>
-        </div>
-      </div>
-
+    <div class="form-group">
+      <label>🧠 ¿Qué principio DUA aplicarías en el Caso 3 (Mateo) y cómo?</label>
+      <textarea id="reflexion_caso3" placeholder="Escribe tu propuesta..."></textarea>
     </div>
   </div>
 
-  <!-- Panel: Empatía -->
-  <div class="video-panel" id="vpanel-empatia">
-    <div class="video-grid">
-
-      <div class="video-card">
-        <a href="https://www.youtube.com/watch?v=QXQorU0o-eE" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
-          <img src="https://img.youtube.com/vi/QXQorU0o-eE/hqdefault.jpg" alt="El valor de la empatía" loading="lazy">
-          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <span class="video-tag">Para niños</span>
-        </a>
-        <div class="video-info">
-          <h4>El Valor de la Empatía – Para niños y niñas</h4>
-          <p>Explica qué es la empatía con ejemplos y acciones concretas. Ideal para ver juntos en familia y comentar después.</p>
-          <a href="https://www.youtube.com/watch?v=QXQorU0o-eE" target="_blank" rel="noopener" class="video-link">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
-          </a>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <a href="https://www.youtube.com/watch?v=2QUDtRJxLYo" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
-          <img src="https://img.youtube.com/vi/2QUDtRJxLYo/hqdefault.jpg" alt="Emociones y empatía niños" loading="lazy">
-          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <span class="video-tag">Emociones</span>
-        </a>
-        <div class="video-info">
-          <h4>Emociones, Autoestima y Empatía para niños</h4>
-          <p>Video educativo para aprender las emociones básicas, mejorar la autoestima y descubrir qué es la empatía de forma divertida.</p>
-          <a href="https://www.youtube.com/watch?v=2QUDtRJxLYo" target="_blank" rel="noopener" class="video-link">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
-          </a>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <a href="https://www.youtube.com/watch?v=GDoLU2e1Ad8" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
-          <img src="https://img.youtube.com/vi/GDoLU2e1Ad8/hqdefault.jpg" alt="Empatía y convivencia" loading="lazy">
-          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <span class="video-tag">Convivencia</span>
-        </a>
-        <div class="video-info">
-          <h4>La Empatía y la Convivencia Escolar</h4>
-          <p>Reflexión sobre empatía y convivencia con preguntas para debatir en familia. Del programa Habilidades para la Vida.</p>
-          <a href="https://www.youtube.com/watch?v=GDoLU2e1Ad8" target="_blank" rel="noopener" class="video-link">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
-          </a>
-        </div>
-      </div>
-
+  <!-- ========================================================== -->
+  <h2>🔹 4. Taller práctico – Actividad A: Micro-planeación con DUA y PIAR</h2>
+  <p>Diseña una micro-planeación para una clase o unidad real, aplicando al menos dos principios DUA.</p>
+  <div class="form-card">
+    <div class="form-group">
+      <label>📚 Título / Área / Grado</label>
+      <input id="micro_titulo" placeholder="Ej: Ciencias Naturales – El ciclo del agua, 4° primaria">
+    </div>
+    <div class="form-group">
+      <label>🎯 Objetivo de aprendizaje</label>
+      <textarea id="micro_objetivo" placeholder="¿Qué se espera que aprendan los estudiantes?"></textarea>
+    </div>
+    <div class="form-group">
+      <label>🔸 Principio I (Implicación) – Estrategias</label>
+      <textarea id="micro_principio1" placeholder="Ej: elegir entre varias actividades, trabajo colaborativo, intereses..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>🔸 Principio II (Representación) – Estrategias</label>
+      <textarea id="micro_principio2" placeholder="Ej: videos, infografías, pictogramas, material concreto..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>🔸 Principio III (Acción y expresión) – Estrategias</label>
+      <textarea id="micro_principio3" placeholder="Ej: opciones de respuesta (dibujo, oral, escrito), maquetas..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>🧩 Ajustes específicos para PIAR (si aplica a un estudiante concreto)</label>
+      <textarea id="micro_piar" placeholder="Ej: tiempo extra, audiolibros, tablero de comunicación..."></textarea>
     </div>
   </div>
 
-  <!-- Panel: Sensibilización -->
-  <div class="video-panel" id="vpanel-sensibilizacion">
-    <div class="video-grid">
-
-      <div class="video-card">
-        <a href="https://www.youtube.com/watch?v=n0lJk0mm8X0" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
-          <img src="https://img.youtube.com/vi/n0lJk0mm8X0/hqdefault.jpg" alt="Inclusión educativa" loading="lazy">
-          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <span class="video-tag">Educativo</span>
-        </a>
-        <div class="video-info">
-          <h4>¿Cómo enseñar a los niños a ser inclusivos?</h4>
-          <p>Video con la finalidad de motivar a los niños a respetar y aceptar a todos por igual. Excelente para iniciar conversaciones en familia.</p>
-          <a href="https://www.youtube.com/watch?v=n0lJk0mm8X0" target="_blank" rel="noopener" class="video-link">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
-          </a>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <a href="https://www.youtube.com/watch?v=NSWy-mJfPcw" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
-          <img src="https://img.youtube.com/vi/NSWy-mJfPcw/hqdefault.jpg" alt="Semana de la inclusión" loading="lazy">
-          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <span class="video-tag">Escuela inclusiva</span>
-        </a>
-        <div class="video-info">
-          <h4>Sensibilización sobre la Inclusión Educativa</h4>
-          <p>Elaborado por el equipo de orientación del CEIP Altagracia para la Semana de la Inclusión del Proyecto Erasmus+.</p>
-          <a href="https://www.youtube.com/watch?v=NSWy-mJfPcw" target="_blank" rel="noopener" class="video-link">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
-          </a>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <a href="https://www.youtube.com/watch?v=YOSWwtk92Rc" target="_blank" rel="noopener" class="video-thumb" style="display:block;">
-          <img src="https://img.youtube.com/vi/YOSWwtk92Rc/hqdefault.jpg" alt="Integración e inclusión" loading="lazy">
-          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <span class="video-tag">Integración</span>
-        </a>
-        <div class="video-info">
-          <h4>Integración e Inclusión Educativa</h4>
-          <p>Video que explica la diferencia entre integración e inclusión, conceptos clave para entender el camino hacia una educación para todos.</p>
-          <a href="https://www.youtube.com/watch?v=YOSWwtk92Rc" target="_blank" rel="noopener" class="video-link">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Ver en YouTube
-          </a>
-        </div>
-      </div>
-
+  <!-- ========================================================== -->
+  <h2>🔹 5. Taller práctico – Actividad B: Inicio del PIAR</h2>
+  <p>Identifica un estudiante real en proceso de inclusión y diligencia los componentes iniciales.</p>
+  <div class="form-card">
+    <div class="form-group">
+      <label>👤 Identificación del estudiante (nombre, edad, grado, institución)</label>
+      <input id="piar_id" placeholder="Ej: Sofía Pérez, 9 años, 4° primaria, Escuela Los Pinos">
+    </div>
+    <div class="form-group">
+      <label>🚧 Barreras identificadas</label>
+      <textarea id="piar_barreras" placeholder="Describe las dificultades que presenta el estudiante..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>💪 Fortalezas del estudiante</label>
+      <textarea id="piar_fortalezas" placeholder="Habilidades, intereses, aspectos positivos..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>📝 Primeras propuestas de ajustes</label>
+      <textarea id="piar_ajustes" placeholder="Acciones concretas para eliminar barreras..."></textarea>
     </div>
   </div>
-</div>
 
-<!-- ============================
-     INFORMACIÓN EXTRA
-     ============================ -->
-<div class="info-section" id="informacion">
-  <div class="info-inner">
-    <p class="section-title" style="color:var(--navy)">📚 Información complementaria</p>
-    <p class="section-lead" style="margin-bottom:1.5rem;">Amplía tu conocimiento sobre inclusión y diversidad.</p>
-
-    <div class="info-tabs">
-      <button class="itab active" onclick="showIPanel('mitos',this)">💡 Mitos y realidades</button>
-      <button class="itab" onclick="showIPanel('glosario',this)">📖 Glosario</button>
-      <button class="itab" onclick="showIPanel('actividades',this)">🎮 Actividades en familia</button>
-      <button class="itab" onclick="showIPanel('recursos',this)">🔗 Recursos</button>
+  <!-- ========================================================== -->
+  <h2>🔹 6. Cierre y reflexión</h2>
+  <div class="reflexion-box">
+    <div class="form-group">
+      <label>1. ¿Qué aprendizaje de hoy puedo implementar en mi aula la próxima semana?</label>
+      <textarea id="reflexion1"></textarea>
     </div>
-
-    <!-- Mitos y realidades -->
-    <div class="info-panel active" id="ipanel-mitos">
-      <div class="myth-item">
-        <div class="myth-box"><strong>❌ Mito</strong>"La inclusión beneficia solo a los niños con discapacidad."</div>
-        <div class="reality-box"><strong>✅ Realidad</strong>La inclusión enriquece a todos. Los niños aprenden a convivir, a respetar y a desarrollar empatía, habilidades esenciales para la vida.</div>
-      </div>
-      <div class="myth-item">
-        <div class="myth-box"><strong>❌ Mito</strong>"Un niño diferente baja el nivel del grupo."</div>
-        <div class="reality-box"><strong>✅ Realidad</strong>La diversidad en el aula promueve la creatividad, la paciencia y el pensamiento crítico. Los grupos mixtos aprenden mejor juntos.</div>
-      </div>
-      <div class="myth-item">
-        <div class="myth-box"><strong>❌ Mito</strong>"La inclusión es solo responsabilidad de la escuela."</div>
-        <div class="reality-box"><strong>✅ Realidad</strong>La familia es el primer espacio de inclusión. Los valores y actitudes aprendidos en casa determinan cómo el niño trata a los demás.</div>
-      </div>
-      <div class="myth-item">
-        <div class="myth-box"><strong>❌ Mito</strong>"Los niños con dificultades de aprendizaje son menos inteligentes."</div>
-        <div class="reality-box"><strong>✅ Realidad</strong>Las dificultades de aprendizaje no están relacionadas con la inteligencia. Son formas distintas de procesar la información, nada más.</div>
-      </div>
-      <div class="myth-item">
-        <div class="myth-box"><strong>❌ Mito</strong>"Hablar de discapacidad con los niños los asusta o confunde."</div>
-        <div class="reality-box"><strong>✅ Realidad</strong>Los niños que aprenden sobre diversidad desde pequeños son más empáticos y menos propensos a discriminar o excluir.</div>
-      </div>
+    <div class="form-group">
+      <label>2. ¿Qué barrera identifiqué en mi práctica que antes no había reconocido como tal?</label>
+      <textarea id="reflexion2"></textarea>
     </div>
-
-    <!-- Glosario -->
-    <div class="info-panel" id="ipanel-glosario">
-      <div class="glossary-grid">
-        <div class="glossary-item"><div class="term">Inclusión</div><div class="def">Proceso por el cual todos los niños participan activamente en la vida escolar y social, con los apoyos necesarios, sin importar sus diferencias.</div></div>
-        <div class="glossary-item"><div class="term">Integración</div><div class="def">El niño "diferente" se incorpora a un grupo, pero sin que el entorno cambie para acogerlo. A diferencia de la inclusión, la carga de adaptación recae sobre el niño.</div></div>
-        <div class="glossary-item"><div class="term">Diversidad funcional</div><div class="def">Término alternativo a "discapacidad" que reconoce que las personas funcionan de manera diferente, sin que eso implique inferioridad.</div></div>
-        <div class="glossary-item"><div class="term">Empatía</div><div class="def">Capacidad de ponerse en el lugar del otro, comprender sus emociones y responder con respeto y compasión.</div></div>
-        <div class="glossary-item"><div class="term">TDAH</div><div class="def">Trastorno por Déficit de Atención e Hiperactividad. Condición neurológica que afecta la concentración y el control de impulsos. No es falta de voluntad.</div></div>
-        <div class="glossary-item"><div class="term">Dislexia</div><div class="def">Dificultad específica para la lectura y la escritura, no relacionada con la inteligencia. Con apoyo adecuado, los niños con dislexia logran grandes metas.</div></div>
-        <div class="glossary-item"><div class="term">Ajuste razonable</div><div class="def">Modificación o adaptación necesaria para que una persona con discapacidad pueda participar en igualdad de condiciones. Es un derecho reconocido internacionalmente.</div></div>
-        <div class="glossary-item"><div class="term">Barreras para la participación</div><div class="def">Obstáculos físicos, actitudinales o comunicacionales que impiden la plena participación de una persona en la vida social o escolar.</div></div>
-      </div>
+    <div class="form-group">
+      <label>3. ¿Qué apoyo necesito de la institución para implementar el DUA y el PIAR de forma sostenible?</label>
+      <textarea id="reflexion3"></textarea>
     </div>
-
-    <!-- Actividades en familia -->
-    <div class="info-panel" id="ipanel-actividades">
-      <div class="activity-list">
-        <div class="activity">
-          <div class="num">1</div>
-          <div>
-            <h4>El juego de los zapatos</h4>
-            <p>Cada miembro de la familia describe cómo sería su día si no pudiera ver, escuchar o caminar. Reflexionen juntos: ¿qué cambiarían en casa para ayudar a esa persona? Genera empatía real y conversaciones profundas.</p>
-            <span class="age-tag">Edad recomendada: 5+ años</span>
-          </div>
-        </div>
-        <div class="activity">
-          <div class="num">2</div>
-          <div>
-            <h4>El libro de las diferencias</h4>
-            <p>Creen juntos un libro casero donde cada página muestra algo que hace especial a cada miembro de la familia: sus fortalezas, sus formas de aprender, sus gustos únicos. Celebren lo que los hace distintos.</p>
-            <span class="age-tag">Edad recomendada: 4–10 años</span>
-          </div>
-        </div>
-        <div class="activity">
-          <div class="num">3</div>
-          <div>
-            <h4>La semana del lenguaje inclusivo</h4>
-            <p>Durante una semana, noten en familia cuándo usan palabras que etiquetan o excluyen. Cada vez que alguien lo haga, proponen juntos una forma de decirlo diferente. Es un ejercicio revelador para adultos y niños.</p>
-            <span class="age-tag">Edad recomendada: 7+ años</span>
-          </div>
-        </div>
-        <div class="activity">
-          <div class="num">4</div>
-          <div>
-            <h4>Cine-foro en casa</h4>
-            <p>Vean uno de los videos o cuentos recomendados en esta página. Después, conversen: ¿Cómo se sintió el personaje? ¿Qué harías tú en su lugar? ¿Has vivido algo parecido? El diálogo después del video es lo más valioso.</p>
-            <span class="age-tag">Edad recomendada: todas las edades</span>
-          </div>
-        </div>
-        <div class="activity">
-          <div class="num">5</div>
-          <div>
-            <h4>Mi superhéroe inclusivo</h4>
-            <p>Pídele al niño que dibuje o describa un superhéroe cuyo poder sea hacer que todos se sientan incluidos. ¿Qué poderes tiene? ¿Cómo actúa cuando alguien es excluido? Esta actividad proyecta valores de manera positiva.</p>
-            <span class="age-tag">Edad recomendada: 5–12 años</span>
-          </div>
-        </div>
-        <div class="activity">
-          <div class="num">6</div>
-          <div>
-            <h4>El termómetro de las emociones</h4>
-            <p>Creen un termómetro en cartulina con emociones del 1 al 10. Cada día a la hora de la cena, cada uno mueve su marcador y explica cómo se sintió. Practica la validación emocional sin juzgar ni minimizar.</p>
-            <span class="age-tag">Edad recomendada: 4+ años</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Recursos -->
-    <div class="info-panel" id="ipanel-recursos">
-      <div class="recursos-grid">
-        <div class="recurso libro">
-          <div class="tipo">📚 Libro</div>
-          <h4>Por cuatro esquinitas de nada</h4>
-          <p>Jérôme Ruillier. Ed. Juventud. Cuento sobre aceptación e inclusión. Ideal para niños de 3 a 8 años.</p>
-        </div>
-        <div class="recurso libro">
-          <div class="tipo">📚 Libro</div>
-          <h4>El cazo de Lorenzo</h4>
-          <p>Isabelle Carrier. Ed. Juventud. Metáfora visual sobre las dificultades cotidianas de un niño con diversidad funcional.</p>
-        </div>
-        <div class="recurso libro">
-          <div class="tipo">📚 Libro</div>
-          <h4>El principito</h4>
-          <p>Antoine de Saint-Exupéry. Clásico universal que trabaja la empatía, la amistad y ver con el corazón.</p>
-        </div>
-        <div class="recurso web">
-          <div class="tipo">🌐 Web</div>
-          <h4>UNESCO – Educación Inclusiva</h4>
-          <p>Guías, políticas y recursos sobre educación inclusiva para familias y comunidades. Disponible en español.</p>
-        </div>
-        <div class="recurso web">
-          <div class="tipo">🌐 Web</div>
-          <h4>Aula Intercultural</h4>
-          <p>aulaintercultural.org — Materiales educativos sobre diversidad, inclusión e interculturalidad para familias y docentes.</p>
-        </div>
-        <div class="recurso ong">
-          <div class="tipo">🤝 Organización</div>
-          <h4>Plena Inclusión Colombia</h4>
-          <p>Organización que trabaja por los derechos de las personas con discapacidad intelectual y sus familias.</p>
-        </div>
-        <div class="recurso ong">
-          <div class="tipo">🤝 Organización</div>
-          <h4>ICBF – Instituto Colombiano de Bienestar Familiar</h4>
-          <p>Programas de atención a la primera infancia con enfoque inclusivo y diferencial en Colombia.</p>
-        </div>
-        <div class="recurso libro">
-          <div class="tipo">📚 Guía</div>
-          <h4>Crianza con empatía</h4>
-          <p>Colección de guías del MEN (Ministerio de Educación Nacional) para familias sobre crianza positiva e inclusión.</p>
-        </div>
-      </div>
+    <div class="form-group">
+      <label>4. ¿Cómo puedo involucrar a las familias en el proceso del PIAR?</label>
+      <textarea id="reflexion4"></textarea>
     </div>
   </div>
-</div>
 
-<!-- COMPROMISO -->
-<section id="compromiso" class="fade-up">
-  <p class="section-title terracotta">Mi compromiso con la inclusión</p>
-  <p class="section-lead">Escribe tus decisiones. Lleva este compromiso a casa.</p>
-  <div class="compromiso-box fade-up">
-    <div class="compromiso-field">
-      <span class="field-icon">✏️</span>
-      <div style="flex:1">
-        <label for="accion">Una acción que cambiaré desde hoy:</label>
-        <input type="text" id="accion" placeholder="Escribe aquí...">
-      </div>
+  <!-- ========================================================== -->
+  <h2>🔹 7. Compromisos individuales</h2>
+  <p>Escribe tus compromisos concretos para las próximas dos semanas.</p>
+  <div class="form-card">
+    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+      <input id="nuevo_compromiso" placeholder="Escribe tu compromiso..." style="flex: 1; min-width: 200px;">
+      <button class="btn" onclick="agregarCompromiso()">➕ Agregar</button>
     </div>
-    <div class="compromiso-field">
-      <span class="field-icon">🚫</span>
-      <div style="flex:1">
-        <label for="frase">Una frase que evitaré decir en casa:</label>
-        <input type="text" id="frase" placeholder="Escribe aquí...">
-      </div>
-    </div>
-    <div class="compromiso-field">
-      <span class="field-icon">🌱</span>
-      <div style="flex:1">
-        <label for="practica">Una práctica que fomentaré en familia:</label>
-        <input type="text" id="practica" placeholder="Escribe aquí...">
-      </div>
-    </div>
-    <button class="btn-compromiso" onclick="guardarCompromiso()">Guardar mi compromiso 🌿</button>
-    <div id="compromiso-msg"></div>
+    <ul id="lista-compromisos"></ul>
   </div>
-</section>
 
-<!-- CIERRE -->
-<div class="cierre">
-  <h2>La inclusión no se enseña con palabras, se vive con el ejemplo.</h2>
-  <p>Nuestros hijos aprenden mucho más de lo que hacemos que de lo que decimos.</p>
-  <div class="tips">
-    <span class="tip">🎧 Escucha sin juzgar</span>
-    <span class="tip">💚 Valida las emociones</span>
-    <span class="tip">🗣️ Habla de la diversidad con naturalidad</span>
+  <!-- ========================================================== -->
+  <div style="text-align: center; margin: 2.5rem 0;">
+    <button class="btn btn-descarga" onclick="generarYDescargar()">📄 Generar y descargar mi plan individual</button>
+    <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #475569;">Descargarás un archivo HTML con todas tus respuestas, listo para imprimir o compartir.</p>
   </div>
+
+  <!-- ========================================================== -->
+  <footer>
+    <p>Taller DUA y PIAR – Herramienta individual de autogestión.</p>
+    <p style="margin-top: 0.3rem;">Los datos se guardan automáticamente en tu navegador (localStorage).</p>
+  </footer>
+
 </div>
 
 <script>
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Video tabs
-  function showVPanel(id, btn) {
-    document.querySelectorAll('.video-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.vtab').forEach(b => b.classList.remove('active'));
-    document.getElementById('vpanel-' + id).classList.add('active');
-    btn.classList.add('active');
+  // --- Cargar datos guardados ---
+  function cargarDatos() {
+    const datos = JSON.parse(localStorage.getItem('dua_piar_individual'));
+    if (!datos) return;
+    const mapeo = {
+      'reflexion_caso1': 'reflexion_caso1',
+      'reflexion_caso2': 'reflexion_caso2',
+      'reflexion_caso3': 'reflexion_caso3',
+      'micro_titulo': 'micro_titulo',
+      'micro_objetivo': 'micro_objetivo',
+      'micro_principio1': 'micro_principio1',
+      'micro_principio2': 'micro_principio2',
+      'micro_principio3': 'micro_principio3',
+      'micro_piar': 'micro_piar',
+      'piar_id': 'piar_id',
+      'piar_barreras': 'piar_barreras',
+      'piar_fortalezas': 'piar_fortalezas',
+      'piar_ajustes': 'piar_ajustes',
+      'reflexion1': 'reflexion1',
+      'reflexion2': 'reflexion2',
+      'reflexion3': 'reflexion3',
+      'reflexion4': 'reflexion4'
+    };
+    for (const [key, id] of Object.entries(mapeo)) {
+      const el = document.getElementById(id);
+      if (el && datos[key] !== undefined) el.value = datos[key];
+    }
+    if (datos.compromisos) {
+      window._compromisos = datos.compromisos;
+      renderCompromisos();
+    }
   }
 
-  // Info tabs
-  function showIPanel(id, btn) {
-    document.querySelectorAll('.info-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.itab').forEach(b => b.classList.remove('active'));
-    document.getElementById('ipanel-' + id).classList.add('active');
-    btn.classList.add('active');
+  // --- Guardar datos automáticamente ---
+  function guardarDatos() {
+    const datos = {
+      reflexion_caso1: document.getElementById('reflexion_caso1').value,
+      reflexion_caso2: document.getElementById('reflexion_caso2').value,
+      reflexion_caso3: document.getElementById('reflexion_caso3').value,
+      micro_titulo: document.getElementById('micro_titulo').value,
+      micro_objetivo: document.getElementById('micro_objetivo').value,
+      micro_principio1: document.getElementById('micro_principio1').value,
+      micro_principio2: document.getElementById('micro_principio2').value,
+      micro_principio3: document.getElementById('micro_principio3').value,
+      micro_piar: document.getElementById('micro_piar').value,
+      piar_id: document.getElementById('piar_id').value,
+      piar_barreras: document.getElementById('piar_barreras').value,
+      piar_fortalezas: document.getElementById('piar_fortalezas').value,
+      piar_ajustes: document.getElementById('piar_ajustes').value,
+      reflexion1: document.getElementById('reflexion1').value,
+      reflexion2: document.getElementById('reflexion2').value,
+      reflexion3: document.getElementById('reflexion3').value,
+      reflexion4: document.getElementById('reflexion4').value,
+      compromisos: window._compromisos || []
+    };
+    localStorage.setItem('dua_piar_individual', JSON.stringify(datos));
   }
 
-  // Compromiso form
-  function guardarCompromiso() {
-    const accion = document.getElementById('accion').value.trim();
-    const frase = document.getElementById('frase').value.trim();
-    const practica = document.getElementById('practica').value.trim();
-    if (!accion && !frase && !practica) { alert('Por favor escribe al menos uno de tus compromisos.'); return; }
-    const msg = document.getElementById('compromiso-msg');
-    const lines = [];
-    if (accion) lines.push('✏️ <strong>Cambiaré:</strong> ' + accion);
-    if (frase) lines.push('🚫 <strong>Evitaré:</strong> ' + frase);
-    if (practica) lines.push('🌱 <strong>Fomentaré:</strong> ' + practica);
-    msg.innerHTML = '<div style="background:#eef5e8;border-radius:12px;padding:1.2rem;margin-top:1rem;text-align:left;line-height:2">🌿 <strong>Compromiso registrado:</strong><br>' + lines.join('<br>') + '</div><p style="margin-top:0.75rem;color:var(--olive);font-size:0.95rem">¡Gracias por dar este paso hacia un hogar más inclusivo!</p>';
-    msg.style.display = 'block';
+  // --- Compromisos ---
+  window._compromisos = [];
+
+  function renderCompromisos() {
+    const ul = document.getElementById('lista-compromisos');
+    ul.innerHTML = '';
+    window._compromisos.forEach((texto, idx) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<span>✅ ${texto}</span><button class="btn btn-eliminar" onclick="eliminarCompromiso(${idx})">✕</button>`;
+      ul.appendChild(li);
+    });
+    guardarDatos();
   }
+
+  function agregarCompromiso() {
+    const input = document.getElementById('nuevo_compromiso');
+    const texto = input.value.trim();
+    if (!texto) return alert('Escribe un compromiso válido.');
+    window._compromisos.push(texto);
+    input.value = '';
+    renderCompromisos();
+  }
+
+  function eliminarCompromiso(idx) {
+    window._compromisos.splice(idx, 1);
+    renderCompromisos();
+  }
+
+  // --- Auto-guardar en todos los inputs ---
+  document.querySelectorAll('input, textarea').forEach(el => {
+    el.addEventListener('input', guardarDatos);
+  });
+
+  // --- Generar y descargar plan individual ---
+  function generarYDescargar() {
+    // Forzar guardado antes de generar
+    guardarDatos();
+
+    const datos = JSON.parse(localStorage.getItem('dua_piar_individual'));
+    if (!datos) return alert('No se encontraron datos. Asegúrate de haber escrito algo.');
+
+    const compromisosHtml = datos.compromisos && datos.compromisos.length > 0
+      ? datos.compromisos.map(c => `<li>✅ ${c}</li>`).join('')
+      : '<li><em>No se registraron compromisos aún.</em></li>';
+
+    const htmlReporte = `<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Mi Plan Individual - DUA y PIAR</title>
+<style>
+  body { font-family: 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 2rem auto; padding: 2rem; background: #f8fafc; color: #1e293b; }
+  h1 { color: #0f3b5e; border-left: 6px solid #2b7a8a; padding-left: 1rem; }
+  h2 { color: #1e4a6b; border-bottom: 2px solid #dbeafe; padding-bottom: 0.3rem; margin-top: 2rem; }
+  .seccion { background: white; padding: 1.5rem; border-radius: 16px; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .etiqueta { font-weight: 700; color: #2b7a8a; display: block; margin-top: 0.8rem; }
+  .valor { margin-left: 0.5rem; line-height: 1.6; }
+  ul { list-style: none; padding: 0; }
+  ul li { background: #f1f5f9; padding: 0.5rem 1rem; border-radius: 30px; margin-bottom: 0.4rem; }
+  footer { margin-top: 3rem; border-top: 1px solid #e2e8f0; padding-top: 1rem; text-align: center; color: #64748b; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<h1>📘 Mi Plan Individual: DUA y PIAR</h1>
+<p><strong>Fecha de generación:</strong> ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}</p>
+
+<div class="seccion">
+  <h2>🔹 Reflexión sobre los casos</h2>
+  <p><span class="etiqueta">Caso 1 (Sofía):</span> <span class="valor">${datos.reflexion_caso1 || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">Caso 2 (Julián):</span> <span class="valor">${datos.reflexion_caso2 || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">Caso 3 (Mateo):</span> <span class="valor">${datos.reflexion_caso3 || '(No especificado)'}</span></p>
+</div>
+
+<div class="seccion">
+  <h2>🔹 Actividad A: Micro-planeación con DUA</h2>
+  <p><span class="etiqueta">Título / Área:</span> <span class="valor">${datos.micro_titulo || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">Objetivo:</span> <span class="valor">${datos.micro_objetivo || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">Principio I (Implicación):</span> <span class="valor">${datos.micro_principio1 || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">Principio II (Representación):</span> <span class="valor">${datos.micro_principio2 || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">Principio III (Acción/expresión):</span> <span class="valor">${datos.micro_principio3 || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">Ajustes PIAR:</span> <span class="valor">${datos.micro_piar || '(No especificado)'}</span></p>
+</div>
+
+<div class="seccion">
+  <h2>🔹 Actividad B: Inicio del PIAR</h2>
+  <p><span class="etiqueta">Identificación:</span> <span class="valor">${datos.piar_id || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">Barreras identificadas:</span> <span class="valor">${datos.piar_barreras || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">Fortalezas:</span> <span class="valor">${datos.piar_fortalezas || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">Propuestas de ajustes:</span> <span class="valor">${datos.piar_ajustes || '(No especificado)'}</span></p>
+</div>
+
+<div class="seccion">
+  <h2>🔹 Reflexión final</h2>
+  <p><span class="etiqueta">1. Aprendizaje para el aula:</span> <span class="valor">${datos.reflexion1 || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">2. Barrera en mi práctica:</span> <span class="valor">${datos.reflexion2 || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">3. Apoyo necesario de la institución:</span> <span class="valor">${datos.reflexion3 || '(No especificado)'}</span></p>
+  <p><span class="etiqueta">4. Involucramiento de las familias:</span> <span class="valor">${datos.reflexion4 || '(No especificado)'}</span></p>
+</div>
+
+<div class="seccion">
+  <h2>✍️ Mis compromisos</h2>
+  <ul>${compromisosHtml}</ul>
+</div>
+
+<footer>Documento generado automáticamente desde la herramienta individual del Taller DUA y PIAR.</footer>
+</body>
+</html>`;
+
+    // Descargar
+    const blob = new Blob([htmlReporte], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `mi_plan_DUA_PIAR_${new Date().toISOString().slice(0,10)}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // --- Inicializar ---
+  cargarDatos();
+  // Asegurar que los compromisos se carguen bien
+  if (!window._compromisos) window._compromisos = [];
+  renderCompromisos();
 </script>
+
 </body>
 </html>
